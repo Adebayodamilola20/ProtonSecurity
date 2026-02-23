@@ -85,7 +85,7 @@ const Board = () => {
             <div className="text-left">
               <div className="inline-block">
                 <h2 className="text-4xl font-bold text-primary mb-2">
-                Director of Management
+                 Management
                 </h2>
                 <div className="w-24 h-2 bg-gradient-to-r from-yellow-400 to-yellow-600 rounded-full mx-auto mt-1 mb-12"></div>
               </div>

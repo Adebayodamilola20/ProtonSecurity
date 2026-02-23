@@ -1,6 +1,7 @@
 import { Shield, Target, Eye, Heart, Globe, Award } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 import AnimatedSection from "@/components/AnimatedSection";
+import CountUp from "@/components/CountUp";
 import boardImage from "@/assets/board-meeting.jpg";
 import img333 from "@/assets/IMG_2174 2.jpg";
 import img2228 from "@/assets/IMG_2228.jpg";
@@ -176,21 +177,32 @@ const About = () => {
             <AnimatedSection delay={200}>
               <Card className="bg-white/10 backdrop-blur-sm border-white/20">
                 <CardContent className="p-8">
-                  <h3 className="text-2xl font-bold mb-6 text-highlight">Our Global Presence</h3>
-                  <div className="grid grid-cols-2 gap-6">
-                    {[
-                      { region: "North America", clients: "150+" },
-                      { region: "Europe", clients: "120+" },
-                      { region: "Africa", clients: "100+" },
-                      { region: "Asia Pacific", clients: "80+" },
-                      { region: "Middle East", clients: "60+" },
-                      { region: "Latin America", clients: "40+" }
-                    ].map((item) => (
-                      <div key={item.region} className="text-center">
-                        <div className="text-3xl font-bold text-highlight mb-1">{item.clients}</div>
-                        <div className="text-sm text-gray-300">{item.region}</div>
+                  <h3 className="text-2xl font-bold mb-6 text-highlight">Our Impact</h3>
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 text-center">
+                    <div className="p-2">
+                      <div className="text-4xl font-bold text-highlight mb-1">
+                        <CountUp end={21} suffix="+" />
                       </div>
-                    ))}
+                      <div className="text-sm text-gray-300 uppercase tracking-wider">Years Experience</div>
+                    </div>
+                    <div className="p-2">
+                      <div className="text-4xl font-bold text-highlight mb-1">
+                        <CountUp end={12000} suffix="+" />
+                      </div>
+                      <div className="text-sm text-gray-300 uppercase tracking-wider">Trained Professionals</div>
+                    </div>
+                    <div className="p-2">
+                      <div className="text-4xl font-bold text-highlight mb-1">
+                        <CountUp end={60} suffix="+" />
+                      </div>
+                      <div className="text-sm text-gray-300 uppercase tracking-wider">Corporate Clients</div>
+                    </div>
+                    <div className="p-2">
+                      <div className="text-4xl font-bold text-highlight mb-1">
+                        <CountUp end={7} suffix="+" />
+                      </div>
+                      <div className="text-sm text-gray-300 uppercase tracking-wider">Countries Served</div>
+                    </div>
                   </div>
                 </CardContent>
               </Card>

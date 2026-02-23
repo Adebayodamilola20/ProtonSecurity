@@ -16,6 +16,7 @@ import heroImage4 from "@/assets/IMG_2232.jpg";
 import trainingImage from "@/assets/IMG_2208.jpg";
 import gemiImages233 from "@/assets/Gemini_Generated_Image_2l1i1i2l1i1i2l1i.png";
 import gemini12344 from "@/assets/Gemini_Generated_Image_brqnxqbrqnxqbrqn.png";
+import model21 from "@/assets/models2222.png";
 
 /*
 const API_KEY = "";
@@ -354,7 +355,7 @@ Phone: +234 8032023600 (REPLACE THIS WITH YOUR REAL PHONE NUMBER***)
                 <div className="w-1/2 mt-12">
                   <div className="rounded-2xl overflow-hidden shadow-2xl h-[400px] relative group">
                     <img
-                      src={gemiImages233}
+                      src={model21}
                       alt="Security Team"
                       className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                     />
@@ -392,7 +393,7 @@ Phone: +234 8032023600 (REPLACE THIS WITH YOUR REAL PHONE NUMBER***)
             <AnimatedSection>
               <div>
                 <div className="inline-block bg-highlight/10 text-highlight px-4 py-1 rounded-full text-sm font-semibold mb-4">
-                  WHO ARE WE
+                  WHO ARE WE ?
                 </div>
                 <h2 className="text-4xl font-bold text-primary mb-6">
                   The Standard in Security Excellence
@@ -685,7 +686,7 @@ Phone: +234 8032023600 (REPLACE THIS WITH YOUR REAL PHONE NUMBER***)
                     </div>
                     <div>
                       <h4 className="font-bold text-primary">Cumming West Africa</h4>
-                      <p className="text-sm text-gray-500">Security Manager, Global Bank</p>
+                      <p className="text-sm text-gray-500"></p>
                     </div>
                   </div>
                 </CardContent>
@@ -712,7 +713,7 @@ Phone: +234 8032023600 (REPLACE THIS WITH YOUR REAL PHONE NUMBER***)
                     </div>
                     <div>
                       <h4 className="font-bold text-primary"></h4>
-                      <p className="text-sm text-gray-500">Operations Director, Manufacturing Co</p>
+                      <p className="text-sm text-gray-500">Julius Berger Nigeria</p>
                     </div>
                   </div>
                 </CardContent>
@@ -739,7 +740,7 @@ Phone: +234 8032023600 (REPLACE THIS WITH YOUR REAL PHONE NUMBER***)
                     </div>
                     <div>
                       <h4 className="font-bold text-primary"></h4>
-                      <p className="text-sm text-gray-500">Facility Manager, Healthcare Group</p>
+                      <p className="text-sm text-gray-500">SAHCOL</p>
                     </div>
                   </div>
                 </CardContent>
