@@ -257,7 +257,7 @@ Phone: +234 8032023600 (REPLACE THIS WITH YOUR REAL PHONE NUMBER***)
                 Our Legacy in Motion
               </div>
               <h1 className="text-5xl md:text-7xl font-bold mb-6 leading-tight">
-               Committed to Your Safety, Today and Always.
+                Committed to Your Safety, Today and Always.
                 {/* <span className="text-yellow-500 italic">It Is Our Enduring Commitment.</span> */}
               </h1>
               <p className="text-xl md:text-2xl mb-10 max-w-2xl text-gray-200">
@@ -402,7 +402,7 @@ Phone: +234 8032023600 (REPLACE THIS WITH YOUR REAL PHONE NUMBER***)
                   We're a premier provider of comprehensive security solutions, integrating advanced technology with decades of proven expertise to deliver exceptional protection for businesses and organizations worldwide.
                 </p>
                 <p className="text-lg text-gray-700 mb-6 leading-relaxed">
-                 Our team of certified professionals draws on extensive military, law enforcement, and corporate security backgrounds to design tailored solutions that effectively address your unique security challenges.
+                  Our team of certified professionals draws on extensive military, law enforcement, and corporate security backgrounds to design tailored solutions that effectively address your unique security challenges.
                 </p>
                 <Link to="/about">
                   <Button className="btn-highlight">
@@ -513,7 +513,7 @@ Phone: +234 8032023600 (REPLACE THIS WITH YOUR REAL PHONE NUMBER***)
                   World-Class Security Training Programs
                 </h2>
                 <p className="text-lg text-gray-200 mb-6 leading-relaxed">
-                 Our comprehensive training programs are designed to develop highly skilled security professionals equipped to manage diverse situations with confidence and expertise.
+                  Our comprehensive training programs are designed to develop highly skilled security professionals equipped to manage diverse situations with confidence and expertise.
                 </p>
                 <ul className="space-y-3 mb-8">
                   {["Basic Security Training", "Advanced Tactical Operations", "Crisis Management", "Specialized Certifications"].map((item, idx) => (
@@ -569,7 +569,7 @@ Phone: +234 8032023600 (REPLACE THIS WITH YOUR REAL PHONE NUMBER***)
         </div>
       </section>
 
-      {/* Testimonials Section */}
+      {/* Testimonials Section
       <section className="section-padding bg-white">
         <div className="container-custom">
           <AnimatedSection>
@@ -583,9 +583,9 @@ Phone: +234 8032023600 (REPLACE THIS WITH YOUR REAL PHONE NUMBER***)
               </p>
             </div>
           </AnimatedSection>
-
+          
+          
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {/* Testimonial 1 */}
             <AnimatedSection delay={0}>
               <Card className="h-full hover:shadow-lg transition-shadow border-l-4 border-l-accent">
                 <CardContent className="p-6">
@@ -612,7 +612,6 @@ Phone: +234 8032023600 (REPLACE THIS WITH YOUR REAL PHONE NUMBER***)
               </Card>
             </AnimatedSection>
 
-            {/* Testimonial 2 */}
             <AnimatedSection delay={100}>
               <Card className="h-full hover:shadow-lg transition-shadow border-l-4 border-l-accent">
                 <CardContent className="p-6">
@@ -639,7 +638,6 @@ Phone: +234 8032023600 (REPLACE THIS WITH YOUR REAL PHONE NUMBER***)
               </Card>
             </AnimatedSection>
 
-            {/* Testimonial 3 */}
             <AnimatedSection delay={200}>
               <Card className="h-full hover:shadow-lg transition-shadow border-l-4 border-l-accent">
                 <CardContent className="p-6">
@@ -666,7 +664,6 @@ Phone: +234 8032023600 (REPLACE THIS WITH YOUR REAL PHONE NUMBER***)
               </Card>
             </AnimatedSection>
 
-            {/* Testimonial 4 */}
             <AnimatedSection delay={300}>
               <Card className="h-full hover:shadow-lg transition-shadow border-l-4 border-l-accent">
                 <CardContent className="p-6">
@@ -693,7 +690,6 @@ Phone: +234 8032023600 (REPLACE THIS WITH YOUR REAL PHONE NUMBER***)
               </Card>
             </AnimatedSection>
 
-            {/* Testimonial 5 */}
             <AnimatedSection delay={400}>
               <Card className="h-full hover:shadow-lg transition-shadow border-l-4 border-l-accent">
                 <CardContent className="p-6">
@@ -720,7 +716,6 @@ Phone: +234 8032023600 (REPLACE THIS WITH YOUR REAL PHONE NUMBER***)
               </Card>
             </AnimatedSection>
 
-            {/* Testimonial 6 */}
             <AnimatedSection delay={500}>
               <Card className="h-full hover:shadow-lg transition-shadow border-l-4 border-l-accent">
                 <CardContent className="p-6">
@@ -749,6 +744,7 @@ Phone: +234 8032023600 (REPLACE THIS WITH YOUR REAL PHONE NUMBER***)
           </div>
         </div>
       </section>
+      */}
 
       {/* CTA Section */}
       <section className="section-padding bg-gradient-to-r from-primary via-accent to-primary text-white">

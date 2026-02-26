@@ -47,7 +47,7 @@ const Clients = () => {
       </section>
 
       {/* Testimonials */}
-      <Testimonials />
+      {/* <Testimonials /> */}
     </div>
   );
 };
