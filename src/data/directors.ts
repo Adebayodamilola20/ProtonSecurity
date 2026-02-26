@@ -63,7 +63,7 @@ export const directors: Director[] = [
       "Executive Director (Operations & Business Development) at Arksego Nigeria Limited",
       "Alumnus of Lagos Business School, Senior Management Program (SMP 46)"
     ],
-    images: [odebunmi,],
+    images: [img4555,],
     social: {
       tiktok: "https://tiktok.com/@johnsmith",
       instagram: "https://instagram.com/johnsmith",
@@ -77,7 +77,7 @@ export const directors: Director[] = [
     bio: "Dr. Olumide Olayinka is a seasoned legal practitioner with over thirty-two years of experience, having been called to the Nigerian Bar in 1992. A graduate of the Ogun State University, he obtained both the Master of Industrial and Labour Relations (MILR) and Master of Laws (LLM) degrees from the University of Lagos. Further, he earned a PhD in Law from the Leeds Beckett University, Leeds, United Kingdom. He was at various times, inter alia, Senior State Counsel in the Ministry of Justice, Ogun State; as well as General Counsel, at the Troyka Group in Lagos State.",
     achievements: [
     ],
-    images: [olumide],
+    images: [img3303],
     social: {
       instagram: "https://instagram.com/sarahjohnson",
       facebook: "https://facebook.com/sarahjohnson"
@@ -95,7 +95,7 @@ export const directors: Director[] = [
       "Directed cross-functional teams to exceed performance targets.",
       "Launched new services that boosted market visibility and client retention."
     ],
-    images: [familusi, img2172, img2171],
+    images: [img2174, img2172, img2171],
     social: {
       tiktok: "https://tiktok.com/@michaelchen",
       instagram: "https://instagram.com/michaelchen"

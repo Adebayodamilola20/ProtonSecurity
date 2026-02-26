@@ -14,9 +14,9 @@ const DirectorProfile = () => {
   // Auto-rotate images every 3 seconds
   useEffect(() => {
     if (!director) return;
-    
+
     const interval = setInterval(() => {
-      setCurrentImageIndex((prevIndex) => 
+      setCurrentImageIndex((prevIndex) =>
         (prevIndex + 1) % director.images.length
       );
     }, 3000);
@@ -24,7 +24,7 @@ const DirectorProfile = () => {
     return () => clearInterval(interval);
   }, [director]);
 
- 
+
   useEffect(() => {
     const timer = setTimeout(() => {
       window.scrollTo(0, 0);
@@ -73,24 +73,22 @@ const DirectorProfile = () => {
                         key={index}
                         src={image}
                         alt={`${director.name} - ${index + 1}`}
-                        className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 ${
-                          index === currentImageIndex ? 'opacity-100' : 'opacity-0'
-                        }`}
+                        className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 ${index === currentImageIndex ? 'opacity-100' : 'opacity-0'
+                          }`}
                       />
                     ))}
                   </div>
-                  
+
                   {/* Image indicators */}
                   <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex space-x-2">
                     {director.images.map((_, index) => (
                       <button
                         key={index}
                         onClick={() => setCurrentImageIndex(index)}
-                        className={`w-2 h-2 rounded-full transition-all ${
-                          index === currentImageIndex 
-                            ? 'bg-highlight w-6' 
-                            : 'bg-white/50 hover:bg-white/70'
-                        }`}
+                        className={`w-2 h-2 rounded-full transition-all ${index === currentImageIndex
+                          ? 'bg-highlight w-6'
+                          : 'bg-white/50 hover:bg-white/70'
+                          }`}
                       />
                     ))}
                   </div>
@@ -103,13 +101,13 @@ const DirectorProfile = () => {
               <div>
                 <h1 className="text-4xl font-bold text-primary mb-2">{director.name}</h1>
                 <p className="text-xl text-highlight font-semibold mb-6">{director.title}</p>
-                
+
                 {/* Social Links */}
                 <div className="flex space-x-4 mb-8">
                   {director.social.tiktok && (
-                    <a 
-                      href={director.social.tiktok} 
-                      target="_blank" 
+                    <a
+                      href={director.social.tiktok}
+                      target="_blank"
                       rel="noopener noreferrer"
                       className="w-10 h-10 bg-primary rounded-full flex items-center justify-center hover:bg-accent transition-colors"
                     >
@@ -117,9 +115,9 @@ const DirectorProfile = () => {
                     </a>
                   )}
                   {director.social.instagram && (
-                    <a 
-                      href={director.social.instagram} 
-                      target="_blank" 
+                    <a
+                      href={director.social.instagram}
+                      target="_blank"
                       rel="noopener noreferrer"
                       className="w-10 h-10 bg-primary rounded-full flex items-center justify-center hover:bg-accent transition-colors"
                     >
@@ -127,9 +125,9 @@ const DirectorProfile = () => {
                     </a>
                   )}
                   {director.social.facebook && (
-                    <a 
-                      href={director.social.facebook} 
-                      target="_blank" 
+                    <a
+                      href={director.social.facebook}
+                      target="_blank"
                       rel="noopener noreferrer"
                       className="w-10 h-10 bg-primary rounded-full flex items-center justify-center hover:bg-accent transition-colors"
                     >
@@ -148,9 +146,9 @@ const DirectorProfile = () => {
               </Card>
 
               {/* Achievements */}
-             
-            {/* Achievements */}
-            {director.id !== "sarah-john" && (
+
+              {/* Achievements */}
+              {director.id !== "sarah-john" && (
                 <Card>
                   <CardContent className="p-6">
                     <div className="flex items-center space-x-3 mb-6">

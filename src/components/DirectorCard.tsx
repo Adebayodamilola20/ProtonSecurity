@@ -12,7 +12,7 @@ const DirectorCard = ({ director }: DirectorCardProps) => {
     <Link to={`/director/${director.id}`}>
       <Card className="group overflow-hidden hover:shadow-xl transition-all duration-300 hover:scale-105 border-2 hover:border-accent">
         <CardContent className="p-0">
-          <div className="relative h-70 overflow-hidden">
+          <div className="relative h-64 overflow-hidden">
             <img
               src={director.images[0]}
               alt={director.name}
