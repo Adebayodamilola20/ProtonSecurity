@@ -542,7 +542,7 @@ Phone: +234 8032023600 (REPLACE THIS WITH YOUR REAL PHONE NUMBER***)
               <div className="inline-block bg-highlight/10 text-highlight px-4 py-1 rounded-full text-sm font-semibold mb-4">
                 LEADERSHIP TEAM
               </div>
-              <h2 className="text-4xl font-bold text-primary mb-4">Meet Our Directors</h2>
+              <h2 className="text-4xl font-bold text-primary mb-4">Meet Our Management</h2>
               <p className="text-lg text-gray-600 max-w-2xl mx-auto">
                 Proven leaders shaping innovative, high-performance security solutions.
               </p>
