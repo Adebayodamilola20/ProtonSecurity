@@ -78,8 +78,8 @@ const PolicyStatement = () => {
             <div>
               <h2 className="text-2xl font-bold text-primary mb-4">Confidentiality & Data Protection</h2>
               <p className="text-gray-700 leading-relaxed">
-                We are committed to protecting the confidentiality of our clients' information.
-                All personnel sign non-disclosure agreements and are trained in data protection protocols.
+                We are committed to upholding the confidentiality of our clients' information.
+                All personnel understand the importance of data protection protocols.
                 We comply with all applicable data privacy laws and regulations.
               </p>
             </div>
@@ -89,7 +89,7 @@ const PolicyStatement = () => {
             <div>
               <h2 className="text-2xl font-bold text-primary mb-4">Health & Safety</h2>
               <p className="text-gray-700 leading-relaxed">
-                The health and safety of our personnel and clients is paramount. We maintain comprehensive
+                The health and safety of our personnel and clients are paramount. We maintain comprehensive
                 health and safety policies, provide appropriate protective equipment, and ensure all operations
                 comply with occupational health and safety regulations.
               </p>
@@ -100,7 +100,7 @@ const PolicyStatement = () => {
             <div>
               <h2 className="text-2xl font-bold text-primary mb-4">Equal Opportunity</h2>
               <p className="text-gray-700 leading-relaxed">
-                Proton Security is an equal opportunity employer. We are committed to creating an inclusive
+                Proton Security Services Nigeria Limited is an equal opportunity employer. We are committed to creating an inclusive
                 environment free from discrimination and harassment, where all individuals are treated with
                 dignity and respect regardless of race, gender, age, religion, disability, or any other
                 protected characteristic.
@@ -123,7 +123,7 @@ const PolicyStatement = () => {
             <div className="pt-6 border-t border-gray-200">
               <p className="text-sm text-gray-600 italic">
                 This policy statement is reviewed and updated regularly to ensure it remains relevant and
-                effective. Last updated: October 2025
+                effective. Last updated: February 2026
               </p>
             </div>
           </AnimatedSection>
