@@ -78,8 +78,9 @@ const PolicyStatement = () => {
             <div>
               <h2 className="text-2xl font-bold text-primary mb-4">Confidentiality & Data Protection</h2>
               <p className="text-gray-700 leading-relaxed">
-                We are committed to upholding the confidentiality of our clients' information.
+                We are committed to protecting the confidentiality of our clients' information.
                 All personnel understand the importance of data protection protocols.
+                All personnel sign non-disclosure Agreements and are trained in data protection protocols.
                 We comply with all applicable data privacy laws and regulations.
               </p>
             </div>
@@ -100,7 +101,7 @@ const PolicyStatement = () => {
             <div>
               <h2 className="text-2xl font-bold text-primary mb-4">Equal Opportunity</h2>
               <p className="text-gray-700 leading-relaxed">
-                Proton Security Services Nigeria Limited is an equal opportunity employer. We are committed to creating an inclusive
+                Proton Security Services Nigeria Limited (Proton) is an equal opportunity employer. We are committed to creating an inclusive
                 environment free from discrimination and harassment, where all individuals are treated with
                 dignity and respect regardless of race, gender, age, religion, disability, or any other
                 protected characteristic.

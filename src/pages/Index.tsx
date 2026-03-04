@@ -535,7 +535,7 @@ Phone: +234 8032023600 (REPLACE THIS WITH YOUR REAL PHONE NUMBER***)
       </section>
 
       {/* Board Members Preview */}
-      <section className="section-padding bg-background">
+  <section className="section-padding bg-background">
         <div className="container-custom">
           <AnimatedSection>
             <div className="text-center mb-12">
