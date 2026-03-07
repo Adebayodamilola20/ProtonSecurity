@@ -85,7 +85,7 @@ const About = () => {
               <div>
                 <h2 className="text-4xl font-bold text-primary mb-6">Our Story</h2>
                 <p className="text-gray-700 mb-4 leading-relaxed">
-                  Proton Security Services Nigeria Limited (Proton) was established in 2003 in Lagos, Nigeria, with a clear mission to elevate professional security services through highly trained personnel, rigorous operational standards, and the effective integration of modern technology.
+                  Proton Security Services Nigeria Limited (Proton) was established in 2003 in Lagos State, Nigeria, with a clear mission to elevate professional security services through highly trained personnel, rigorous operational standards, and the effective integration of modern technology.
                 </p>
                 <p className="text-gray-600 mb-4">
                   Since its inception, the company has expanded steadily across all 36 states of Nigeria. Today, Proton Security Services Nigeria Limited (Proton) employs hundreds of dedicated security professionals whose discipline, competence, and commitment form the foundation of its trusted reputation nationwide.
