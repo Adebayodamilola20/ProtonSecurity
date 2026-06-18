@@ -119,10 +119,10 @@ const Board = () => {
               "General Manager Finance",
               "Regional Manager East",
               "Regional Manager West",
-              "Regional Manager Main Land",
+              "Regional Manager Lagos Mainland",
               "Regional Manager Lagos Island",
               "Regional Manager North",
-              "HR and Admin Manager",
+              "HR/Admin Manager",
               "Secure Logistics"
             ].map((name, index) => (
               <AnimatedSection key={index} delay={index * 100}>
