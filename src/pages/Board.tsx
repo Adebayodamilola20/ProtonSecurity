@@ -101,22 +101,36 @@ const Board = () => {
             ))}
           </div>
 
-          {/* Second Group - From John Chinwendu Down */}
+          {/* Managers Section */}
           <AnimatedSection delay={300}>
             <div className="text-left">
               <div className="inline-block">
                 <h2 className="text-3xl font-bold text-primary mb-2">
                   Managers
                 </h2>
-                <div className="w-20 h-1.5 bg-gradient-to-r from-yellow-400 to-yellow-600 rounded-full mx-auto mt-1 mb-12"></div>
+                <div className="w-20 h-1.5 bg-gradient-to-r from-yellow-400 to-yellow-600 rounded-full mt-1 mb-12"></div>
               </div>
             </div>
           </AnimatedSection>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
-            {directors.slice(3).map((director, index) => (
-              <AnimatedSection key={director.id} delay={index * 100}>
-                <DirectorCard director={director} />
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
+            {[
+              "General Manager Operation",
+              "General Manager Finance",
+              "Regional Manager East",
+              "Regional Manager West",
+              "Regional Manager Main Land",
+              "Regional Manager Lagos Island",
+              "Regional Manager North",
+              "HR and Admin Manager",
+              "Secure Logistics"
+            ].map((name, index) => (
+              <AnimatedSection key={index} delay={index * 100}>
+                <div className="text-center p-8 bg-white/50 backdrop-blur-sm rounded-xl border border-gray-100 shadow-sm transition-all hover:shadow-md hover:scale-105 group">
+                  <p className="text-lg font-bold text-primary tracking-wide group-hover:text-accent transition-colors">
+                    {name.toUpperCase()}
+                  </p>
+                </div>
               </AnimatedSection>
             ))}
           </div>

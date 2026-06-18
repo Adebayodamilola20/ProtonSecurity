@@ -10,12 +10,12 @@ import AnimatedSection from "@/components/AnimatedSection";
 import CountUp from "@/components/CountUp";
 import StaggeredText from "@/components/StaggeredText";
 import heroImage from "@/assets/IMG_2209.jpg";
-import heroImage2 from "@/assets/IMG_2208.jpg";
-import heroImage3 from "@/assets/IMG_2171.jpg";
+import heroImage2 from "@/assets/parttern.jpg";
+import heroImage3 from "@/assets/pop.jpg";
 import heroImage4 from "@/assets/IMG_2232.jpg";
-import trainingImage from "@/assets/IMG_2208.jpg";
+import trainingImage from "@/assets/pop.jpg";
 import gemiImages233 from "@/assets/Gemini_Generated_Image_2l1i1i2l1i1i2l1i.png";
-import gemini12344 from "@/assets/Gemini_Generated_Image_brqnxqbrqnxqbrqn.png";
+import gemini12344 from "@/assets/pop2.jpg";
 import model21 from "@/assets/models2222.png";
 
 /*
@@ -254,7 +254,7 @@ Phone: +234 8032023600 (REPLACE THIS WITH YOUR REAL PHONE NUMBER***)
           <AnimatedSection>
             <div className="max-w-4xl text-left pl-4 md:pl-0">
               <div className="inline-block bg-yellow-500/20 backdrop-blur-sm border border-yellow-500/30 text-yellow-500 px-4 py-1 rounded-full text-sm font-semibold mb-6">
-                Our Legacy in Motion
+                PROTON SECURITY SERVICES
               </div>
               <h1 className="text-5xl md:text-7xl font-bold mb-6 leading-tight">
                 Committed to Your Safety, Today and Always.

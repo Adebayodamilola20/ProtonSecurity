@@ -101,23 +101,4 @@ export const directors: Director[] = [
       instagram: "https://instagram.com/michaelchen"
     }
   },
-  {
-    id: "kayode-bamgbose",
-    name: "Kayode Felix Bamgbose",
-    title: "Operational Manager",
-    bio: "Kayode Felix Bamgbose is a dedicated Operational Manager at Proton Security, overseeing the day-to-day security operations and ensuring the highest standards of safety and efficiency. With his extensive background in operational management, he leads our field teams with precision and strategic focus.",
-    achievements: [
-      "Expert in operational security management",
-      "Lead coordinator for large-scale security deployments",
-      "Specialist in tactical planning and execution",
-      "Over 15 years of experience in security operations"
-    ],
-    images: [img2192, img2193],
-    social: {
-      instagram: "https://instagram.com/kayodebamgbose",
-      facebook: "https://facebook.com/kayodebamgbose"
-    }
-  },
-
-
 ];

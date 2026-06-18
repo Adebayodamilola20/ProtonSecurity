@@ -3,7 +3,7 @@ import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 import { Shield, Target, Brain, Users, Award, BookOpen } from "lucide-react";
 import AnimatedSection from "@/components/AnimatedSection";
-import trainingImage from "@/assets/IMG_2171.jpg";
+import trainingImage from "@/assets/parttern.jpg";
 
 const Training = () => {
   const corePrograms = [
