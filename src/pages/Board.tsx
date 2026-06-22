@@ -115,21 +115,25 @@ const Board = () => {
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
             {[
-              "General Manager Operation",
-              "General Manager Finance",
-              "Regional Manager East",
-              "Regional Manager West",
-              "Regional Manager Lagos Mainland",
-              "Regional Manager Lagos Island",
-              "Regional Manager North",
-              "HR/Admin Manager",
-              "Secure Logistics"
-            ].map((name, index) => (
+              { title: "General Manager Operations", name: "Okeowo Olalekan" },
+              { title: "General Manager Finance", name: "Tolulope Ekunola" },
+              { title: "Regional Manager East", name: "Kelechi Hillary Iruka" },
+              { title: "Regional Manager Lagos Mainland", name: "Arowolo Adekunle" },
+              { title: "Regional Manager Lagos Island", name: "Jude Orabueze" },
+              { title: "Regional Manager North", name: "Adekunle Ebenezer" },
+              { title: "HR/Admin Manager", name: "Bolatito Aina" },
+              { title: "Secured Logistics Manager", name: "" }
+            ].map((item, index) => (
               <AnimatedSection key={index} delay={index * 100}>
                 <div className="text-center p-8 bg-white/50 backdrop-blur-sm rounded-xl border border-gray-100 shadow-sm transition-all hover:shadow-md hover:scale-105 group">
-                  <p className="text-lg font-bold text-primary tracking-wide group-hover:text-accent transition-colors">
-                    {name.toUpperCase()}
+                  <p className="text-lg font-bold text-primary tracking-wide group-hover:text-accent transition-colors mb-1">
+                    {item.title.toUpperCase()}
                   </p>
+                  {item.name && (
+                    <p className="text-base text-gray-600 font-medium">
+                      {item.name}
+                    </p>
+                  )}
                 </div>
               </AnimatedSection>
             ))}
