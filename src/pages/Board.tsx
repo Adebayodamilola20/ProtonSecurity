@@ -121,6 +121,7 @@ const Board = () => {
               { title: "Regional Manager Lagos Mainland", name: "Arowolo Adekunle" },
               { title: "Regional Manager Lagos Island", name: "Jude Orabueze" },
               { title: "Regional Manager North", name: "Adekunle Ebenezer" },
+              { title: "Regional Manager West", name: "" },
               { title: "HR/Admin Manager", name: "Bolatito Aina" },
               { title: "Secured Logistics Manager", name: "" }
             ].map((item, index) => (
