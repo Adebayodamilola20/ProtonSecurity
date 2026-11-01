@@ -265,17 +265,21 @@ All colors MUST be HSL.
 }
 /* Stacking scroll sections (home page): each section slides up over the previous one */
 .stack-page > section {
-  position: relative;
+  position: sticky;
+  top: var(--stack-top, 0px);
+  transform-origin: center top;
+}
+
+.stack-page > section:not(:first-of-type) {
+  /* Tuck under the previous section so the rounded corners never reveal the page behind */
+  margin-top: -24px;
+  border-top-left-radius: 24px;
+  border-top-right-radius: 24px;
+  box-shadow: 0 -12px 32px rgba(0, 0, 0, 0.18);
 }
 
 @media (min-width: 769px) {
-  .stack-page > section {
-    position: sticky;
-    top: var(--stack-top, 0px);
-  }
-
   .stack-page > section:not(:first-of-type) {
-    /* Tuck under the previous section so the rounded corners never reveal the page behind */
     margin-top: -32px;
     border-top-left-radius: 32px;
     border-top-right-radius: 32px;
@@ -283,22 +287,16 @@ All colors MUST be HSL.
   }
 }
 
-.stack-page > section {
-  transform-origin: center top;
-}
-
 /* Dark overlay used to dim a section as the next one covers it (cheap: opacity only) */
-@media (min-width: 769px) {
-  .stack-page > section::after {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background: #000;
-    opacity: var(--stack-dim, 0);
-    pointer-events: none;
-    border-radius: inherit;
-    z-index: 40;
-  }
+.stack-page > section::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: #000;
+  opacity: var(--stack-dim, 0);
+  pointer-events: none;
+  border-radius: inherit;
+  z-index: 40;
 }
 
 /* Stats strip: continuous left-to-right scroll */

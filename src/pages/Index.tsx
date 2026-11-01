@@ -251,11 +251,10 @@ Website contact page: /contact
     window.addEventListener("resize", update);
 
     // As the next section slides over, gently shrink and dim the one underneath.
-    const desktop = window.matchMedia("(min-width: 769px)");
     const applyDepth = () => {
       sections.forEach((s, i) => {
         const next = sections[i + 1];
-        if (!next || !desktop.matches) {
+        if (!next) {
           s.style.transform = "";
           s.style.removeProperty("--stack-dim");
           return;
