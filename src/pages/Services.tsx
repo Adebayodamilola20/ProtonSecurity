@@ -3,7 +3,7 @@ import { clientLogos } from "@/data/clients";  // New: Import your clients data
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
-import { Check } from "lucide-react";
+import { ArrowRight, Check } from "lucide-react";
 import AnimatedSection from "@/components/AnimatedSection";
 
 const Services = () => {
@@ -13,50 +13,80 @@ const Services = () => {
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
-      <section className="relative py-24 bg-gradient-to-r from-primary via-accent to-primary text-white">
-        <div className="container-custom px-4">
+      <section className="bg-white pt-16 pb-12 md:pt-24 md:pb-16">
+        <div className="container-custom grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center">
           <AnimatedSection>
-            <div className="max-w-3xl mx-auto text-center">
-              <h1 className="text-5xl font-bold mb-6">Our Services</h1>
-              <p className="text-xl text-gray-200">
-                Comprehensive security solutions tailored to meet your unique needs
-              </p>
+            <div className="inline-block bg-highlight/10 text-highlight px-4 py-1 rounded-full text-sm font-semibold mb-5">
+              OUR SERVICES
             </div>
+            <h1 className="text-4xl md:text-6xl font-bold text-primary leading-tight mb-6">
+              Security built around the way you operate
+            </h1>
+            <p className="text-lg text-gray-600 leading-relaxed max-w-xl">
+              From corporate sites to high-profile events, we combine trained personnel, technology and
+              intelligence to deliver protection tailored to your organisation.
+            </p>
+          </AnimatedSection>
+          <AnimatedSection delay={150}>
+            <img
+              src={services[0].image}
+              alt="Proton Security officer on duty"
+              className="w-full aspect-[4/3] object-cover rounded-3xl shadow-xl"
+            />
           </AnimatedSection>
         </div>
       </section>
 
-      {/* Services Grid */}
-      <section className="section-padding bg-background">
-        <div className="container-custom">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-            {services.map((service, index) => (
-              <AnimatedSection key={service.id} delay={index * 100}>
-                <Card className="h-full hover:shadow-2xl transition-all duration-300 hover:scale-[1.02] border-2 hover:border-accent group">
-                  <CardContent className="p-8">
-                    <div className="flex items-start space-x-4 mb-6">
-                      <div className="w-16 h-16 bg-accent/10 rounded-lg flex items-center justify-center flex-shrink-0 group-hover:bg-highlight/20 transition-colors">
-                        <service.icon className="text-accent group-hover:text-highlight transition-colors" size={32} />
-                      </div>
-                      <div>
-                        <h3 className="text-2xl font-bold text-primary mb-2">{service.title}</h3>
-                        <p className="text-gray-600">{service.description}</p>
-                      </div>
-                    </div>
+      {/* Services: alternating left/right rows */}
+      <section className="pb-20 md:pb-28 bg-white">
+        <div className="container-custom space-y-20 md:space-y-28">
+          {services.map((service, index) => {
+            const reversed = index % 2 === 1;
+            return (
+              <div
+                key={service.id}
+                id={service.id}
+                className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center scroll-mt-28"
+              >
+                <AnimatedSection className={reversed ? "lg:order-2" : ""}>
+                  <div className="overflow-hidden rounded-3xl shadow-lg group">
+                    <img
+                      src={service.image}
+                      alt={service.title}
+                      loading="lazy"
+                      className="w-full aspect-[4/3] object-cover transition-transform duration-700 group-hover:scale-105"
+                    />
+                  </div>
+                </AnimatedSection>
 
-                    <div className="space-y-3">
-                      {service.features.map((feature, idx) => (
-                        <div key={idx} className="flex items-start space-x-3">
-                          <Check className="text-highlight flex-shrink-0 mt-1" size={20} />
-                          <span className="text-gray-700">{feature}</span>
-                        </div>
-                      ))}
+                <AnimatedSection delay={150} className={reversed ? "lg:order-1" : ""}>
+                  <div className="flex items-center gap-4 mb-5">
+                    <span className="text-5xl font-bold text-highlight/80 leading-none">
+                      {String(index + 1).padStart(2, "0")}
+                    </span>
+                    <div className="w-12 h-12 rounded-lg bg-primary flex items-center justify-center">
+                      <service.icon className="text-highlight" size={24} />
                     </div>
-                  </CardContent>
-                </Card>
-              </AnimatedSection>
-            ))}
-          </div>
+                  </div>
+                  <h2 className="text-3xl md:text-4xl font-bold text-primary mb-4">{service.title}</h2>
+                  <p className="text-lg text-gray-600 leading-relaxed mb-6">{service.description}</p>
+                  <ul className="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-3 mb-8">
+                    {service.features.map((feature) => (
+                      <li key={feature} className="flex items-start gap-3">
+                        <Check className="text-highlight flex-shrink-0 mt-1" size={18} />
+                        <span className="text-gray-700">{feature}</span>
+                      </li>
+                    ))}
+                  </ul>
+                  <Link to="/contact">
+                    <Button className="btn-highlight">
+                      Request this service <ArrowRight className="ml-2" size={18} />
+                    </Button>
+                  </Link>
+                </AnimatedSection>
+              </div>
+            );
+          })}
         </div>
       </section>
 

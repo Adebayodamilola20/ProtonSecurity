@@ -1,89 +1,3 @@
-
-export interface Client {
-  id: string;
-  name: string;
-  logo: string;
-}
-
-export const clients: Client[] = [
-  {
-    id: "mtn",
-    name: "MTN",
-    logo: "https://images.unsplash.com/photo-1599305445671-ac291c95aaa9?w=200&h=100&fit=crop"
-  },
-  {
-    id: "fcmb",
-    name: "FCMB",
-    logo: "https://images.unsplash.com/photo-1560179707-f14e90ef3623?w=200&h=100&fit=crop"
-  },
-  {
-    id: "multichoice",
-    name: "Multichoice",
-    logo: "https://images.unsplash.com/photo-1611162617474-5b21e879e113?w=200&h=100&fit=crop"
-  },
-  {
-    id: "chevron",
-    name: "Chevron",
-    logo: "https://images.unsplash.com/photo-1599305445671-ac291c95aaa9?w=200&h=100&fit=crop"
-  },
-  {
-    id: "shell",
-    name: "Shell",
-    logo: "https://images.unsplash.com/photo-1560179707-f14e90ef3623?w=200&h=100&fit=crop"
-  },
-  {
-    id: "coca-cola",
-    name: "Coca Cola",
-    logo: "https://images.unsplash.com/photo-1611162617474-5b21e879e113?w=200&h=100&fit=crop"
-  },
-  {
-    id: "nestle",
-    name: "Nestlé",
-    logo: "https://images.unsplash.com/photo-1599305445671-ac291c95aaa9?w=200&h=100&fit=crop"
-  },
-  {
-    id: "unilever",
-    name: "Unilever",
-    logo: "https://images.unsplash.com/photo-1560179707-f14e90ef3623?w=200&h=100&fit=crop"
-  },
-  {
-    id: "microsoft",
-    name: "Microsoft",
-    logo: "https://images.unsplash.com/photo-1611162617474-5b21e879e113?w=200&h=100&fit=crop"
-  },
-  {
-    id: "google",
-    name: "Google",
-    logo: "https://images.unsplash.com/photo-1599305445671-ac291c95aaa9?w=200&h=100&fit=crop"
-  }
-];
-
-export const testimonials = [
-  {
-    id: 1,
-    name: "James Anderson",
-    company: "MTN Nigeria",
-    role: "Chief Security Officer",
-    image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&h=100&fit=crop",
-    quote: "Proton Security has transformed our security operations. Their professionalism and expertise are unmatched. We've seen a 95% reduction in security incidents since partnering with them."
-  },
-  {
-    id: 2,
-    name: "Maria Rodriguez",
-    company: "Multichoice Group",
-    role: "VP of Operations",
-    image: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=100&h=100&fit=crop",
-    quote: "The training programs provided by Proton Security are world-class. Our security team is now better prepared and more confident in handling any situation. Highly recommended!"
-  },
-  {
-    id: 3,
-    name: "David Okonkwo",
-    company: "FCMB",
-    role: "Head of Corporate Security",
-    image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=100&h=100&fit=crop",
-    quote: "Outstanding service delivery! Proton Security's comprehensive approach to security management has given us peace of mind. Their 24/7 monitoring is exceptional."
-  }
-];
 import logo1 from "@/assets/Screenshot 2025-10-09 at 17.25.12.png";
 import logo2 from "@/assets/Screenshot 2025-10-09 at 17.36.32.png";
 import logo3 from "@/assets/Screenshot 2025-10-09 at 17.50.42.png";
@@ -101,80 +15,65 @@ export interface ClientLogo {
   id: string;
   image: string; // Imported image
   alt: string;
-  name: string;  // For accessibility/screen readers
+  name: string; // For accessibility/screen readers
 }
-export const clientLogos: ClientLogo[] = [
-  {
-    id: "1",
-    image: logo1,  // Replace with import, e.g., clientLogo1
-    alt: "Acme Corp Logo",
-    name: "Acme Corp"
-  },
-  {
-    id: "2",
-    image: logo2,  // Replace
-    alt: "TechSecure Logo",
-    name: "TechSecure"
-  },
-  {
-    id: "3",
-    image: logo3,  // Replace
-    alt: "Global Bank Logo",
-    name: "Global Bank"
-  },
-  {
-    id: "4",
-    image: logo4,  // Replace
-    alt: "EventPro Logo",
-    name: "EventPro"
-  },
-  {
-    id: "5",
-    image: logo5,  // Replace
-    alt: "MedHealth Logo",
-    name: "MedHealth"
-  },
-  {
-    id: "6",
-    image: logo6,  // Replace
-    alt: "MedHealth Logo",
-    name: "MedHealth"
-  },
-  {
-    id: "5",
-    image: logo7,  // Replace
-    alt: "MedHealth Logo",
-    name: "MedHealth"
-  },
-  {
-    id: "5",
-    image: logo8,  // Replace
-    alt: "MedHealth Logo",
-    name: "MedHealth"
-  },
-  {
-    id: "5",
-    image: logo9,  // Replace
-    alt: "MedHealth Logo",
-    name: "MedHealth"
-  },
-  {
-    id: "5",
-    image: logo10,  // Replace
-    alt: "MedHealth Logo",
-    name: "MedHealth"
-  },
-  {
-    id: "5",
-    image: logo11,  // Replace
-    alt: "MedHealth Logo",
-    name: "MedHealth"
-  },
-  {
-    id: "5",
-    image: logo12,  // Replace
-    alt: "MedHealth Logo",
-    name: "MedHealth"
-  },
 
-]
+export const clientLogos: ClientLogo[] = [
+  { id: "mtn", image: logo1, alt: "MTN Nigeria Logo", name: "MTN Nigeria" },
+  { id: "fcmb", image: logo2, alt: "FCMB Logo", name: "FCMB" },
+  { id: "multichoice", image: logo3, alt: "MultiChoice Logo", name: "MultiChoice" },
+  { id: "uber", image: logo4, alt: "Uber Logo", name: "Uber" },
+  { id: "9mobile", image: logo5, alt: "9mobile Logo", name: "9mobile" },
+  { id: "ihs", image: logo6, alt: "IHS Logo", name: "IHS" },
+  { id: "airtel", image: logo7, alt: "Airtel Nigeria Logo", name: "Airtel Nigeria" },
+  { id: "beloxxi", image: logo8, alt: "Beloxxi Logo", name: "Beloxxi" },
+  { id: "genesis", image: logo9, alt: "Genesis Logo", name: "Genesis" },
+  { id: "firstbank", image: logo10, alt: "FirstBank Logo", name: "FirstBank" },
+  { id: "execujet", image: logo11, alt: "ExecuJet MRO Services Logo", name: "ExecuJet MRO Services" },
+  { id: "cns-marine", image: logo12, alt: "CNS Marine Nigeria Logo", name: "CNS Marine Nigeria" },
+];
+
+export interface Testimonial {
+  id: number;
+  company: string;
+  quote: string;
+}
+
+export const testimonials: Testimonial[] = [
+  {
+    id: 1,
+    company: "CHI Limited",
+    quote:
+      "Proton Security transformed our corporate security infrastructure. Their professionalism and expertise are unmatched. Highly recommended!",
+  },
+  {
+    id: 2,
+    company: "MTN Nigeria",
+    quote:
+      "The training programs are world-class. Our security team is now more confident and capable than ever before. Excellent investment!",
+  },
+  {
+    id: 3,
+    company: "Ardova PLC",
+    quote:
+      "Outstanding service! Their event security management for our annual conference was flawless. Professional team, highly efficient.",
+  },
+  {
+    id: 4,
+    company: "Cumming West Africa",
+    quote:
+      "Best security partner we've ever worked with. Their attention to detail and rapid response capabilities are exceptional. Five stars!",
+  },
+  {
+    id: 5,
+    company: "Julius Berger Nigeria",
+    quote:
+      "Their crisis management training saved our team during a critical situation. Professional, thorough, and highly effective. Thank you!",
+  },
+  {
+    id: 6,
+    company: "SAHCOL",
+    quote:
+      "Reliable, professional, and always available. Proton Security has been protecting our facilities for years. Couldn't be happier!",
+  },
+];

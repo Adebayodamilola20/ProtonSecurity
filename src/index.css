@@ -117,7 +117,7 @@ All colors MUST be HSL.
 
   body {
     @apply bg-background text-foreground;
-    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   }
 
   h1,
@@ -262,4 +262,84 @@ All colors MUST be HSL.
     animation-duration: 40s;
     /* Slower on small screens */
   }
+}
+/* Stacking scroll sections (home page): each section slides up over the previous one */
+.stack-page > section {
+  position: relative;
+}
+
+@media (min-width: 769px) {
+  .stack-page > section {
+    position: sticky;
+    top: var(--stack-top, 0px);
+  }
+
+  .stack-page > section:not(:first-of-type) {
+    /* Tuck under the previous section so the rounded corners never reveal the page behind */
+    margin-top: -32px;
+    border-top-left-radius: 32px;
+    border-top-right-radius: 32px;
+    box-shadow: 0 -16px 48px rgba(0, 0, 0, 0.18);
+  }
+}
+
+.stack-page > section {
+  transform-origin: center top;
+}
+
+/* Dark overlay used to dim a section as the next one covers it (cheap: opacity only) */
+@media (min-width: 769px) {
+  .stack-page > section::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: #000;
+    opacity: var(--stack-dim, 0);
+    pointer-events: none;
+    border-radius: inherit;
+    z-index: 40;
+  }
+}
+
+/* Stats strip: continuous left-to-right scroll */
+@keyframes marquee-reverse {
+  0% {
+    transform: translateX(-50%);
+  }
+
+  100% {
+    transform: translateX(0%);
+  }
+}
+
+.marquee-content.marquee-reverse {
+  animation: marquee-reverse 35s linear infinite;
+}
+
+.stats-marquee {
+  -webkit-mask-image: linear-gradient(to right, transparent, black 8%, black 92%, transparent);
+  mask-image: linear-gradient(to right, transparent, black 8%, black 92%, transparent);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .marquee-content.marquee-reverse {
+    animation: none;
+  }
+}
+
+/* Cookie banner entrance */
+@keyframes cookie-pop {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.cookie-pop {
+  animation: cookie-pop 0.6s cubic-bezier(0.16, 1, 0.3, 1) both;
 }

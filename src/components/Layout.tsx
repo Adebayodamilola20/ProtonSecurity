@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Menu, X, Phone, Mail, Facebook, Instagram, Twitter, ChevronDown, Linkedin } from "lucide-react";
 import logo from "@/assets/logo.png";
+import CookieConsent from "@/components/CookieConsent";
 
 // A dummy Button component for this single-file React context
 const Button = ({ variant, className, children, onClick }: { variant?: string, className?: string, children: any, onClick?: () => void }) => (
@@ -194,6 +195,8 @@ const Layout = ({ children }) => {
           {children}
         </div>
       </main>
+
+      <CookieConsent />
 
       {/* Footer */}
       <footer className="bg-primary text-white section-padding">

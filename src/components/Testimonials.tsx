@@ -14,24 +14,25 @@ const Testimonials = () => {
           </div>
         </AnimatedSection>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {testimonials.map((testimonial, index) => (
             <AnimatedSection key={testimonial.id} delay={index * 100}>
               <Card className="h-full hover:shadow-xl transition-all duration-300 border-t-4 border-t-accent">
-                <CardContent className="p-6">
+                <CardContent className="p-6 flex flex-col">
                   <Quote className="text-highlight mb-4" size={40} />
-                  <p className="text-gray-700 mb-6 italic leading-relaxed">"{testimonial.quote}"</p>
+                  <p className="text-gray-700 mb-6 italic leading-relaxed flex-1">
+                    "{testimonial.quote}"
+                  </p>
                   <div className="flex items-center space-x-4">
-                    <img
-                      src={testimonial.image}
-                      alt={testimonial.name}
-                      className="w-12 h-12 rounded-full object-cover border-2 border-accent"
-                    />
-                    <div>
-                      <div className="font-semibold text-primary">{testimonial.name}</div>
-                      <div className="text-sm text-gray-600">{testimonial.role}</div>
-                      <div className="text-xs text-accent font-medium">{testimonial.company}</div>
+                    <div className="w-12 h-12 bg-gradient-to-br from-primary to-accent rounded-full flex items-center justify-center text-white font-bold text-sm flex-shrink-0">
+                      {testimonial.company
+                        .split(" ")
+                        .map((word) => word[0])
+                        .join("")
+                        .slice(0, 2)
+                        .toUpperCase()}
                     </div>
+                    <div className="font-semibold text-primary">{testimonial.company}</div>
                   </div>
                 </CardContent>
               </Card>

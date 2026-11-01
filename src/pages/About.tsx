@@ -2,8 +2,6 @@ import { Shield, Target, Eye, Heart, Globe, Award } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 import AnimatedSection from "@/components/AnimatedSection";
 import CountUp from "@/components/CountUp";
-import boardImage from "@/assets/board-meeting.jpg";
-import img333 from "@/assets/IMG_2174 2.jpg";
 import img2228 from "@/assets/IMG_2228.jpg";
 
 const About = () => {
@@ -39,7 +37,7 @@ const About = () => {
             <div className="max-w-3xl mx-auto text-center">
               <h1 className="text-5xl font-bold mb-6">About Proton Security</h1>
               <p className="text-xl text-gray-200">
-                Leading the industry in comprehensive security solutions with over 25 years of excellence
+                Leading the industry in comprehensive security solutions with over two decades of excellence
               </p>
             </div>
           </AnimatedSection>

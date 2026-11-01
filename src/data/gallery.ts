@@ -1,5 +1,3 @@
-import img1 from "@/assets/IMG_2171.jpg";
-import img2 from "@/assets/IMG_2228.jpg";
 import img3 from "@/assets/IMG_2230.jpg";
 import img4 from "@/assets/IMG_2219.jpg";
 import img5 from "@/assets/IMG_2223.jpg";
@@ -17,9 +15,10 @@ import img16 from "@/assets/IMG_2247.jpg";
 import img17 from "@/assets/IMG_2251.jpg";
 import img18 from "@/assets/IMG_2250.jpg";
 import img19 from "@/assets/IMG_2211 2.jpg";
+
 export interface GalleryItem {
   id: string;
-  url: string;  // This will now be your local image import (string URL)
+  url: string; // Local image import
   title: string;
   category: string;
 }
@@ -27,104 +26,104 @@ export interface GalleryItem {
 export const galleryItems: GalleryItem[] = [
   {
     id: "1",
-    url: img19,  // Local: IMG_2172 2.jpg
+    url: img19,
     title: "Security Training Exercise",
     category: "Training",
   },
   {
     id: "2",
-    url: img3,  // Local: IMG_2174 2.jpg
+    url: img3,
     title: "Corporate Security Team",
-    category: "Operations"
+    category: "Operations",
   },
   {
     id: "3",
-    url: img4,  // Local: IMG_2175 2.jpg
+    url: img4,
     title: "Security Control Room",
-    category: "Technology"
+    category: "Technology",
   },
   {
     id: "4",
-    url: img5,  // Local: IMG_2175 2.jpg (adjust if duplicate)
+    url: img5,
     title: "Tactical Response Training",
-    category: "Training"
+    category: "Training",
   },
   {
     id: "5",
-    url: img6,  // Local: IMG_2176 2.jpg
+    url: img6,
     title: "Executive Protection Detail",
-    category: "VIP Security"
+    category: "VIP Security",
   },
   {
     id: "6",
-    url: img7,  // Local: IMG_2178 2.jpg
+    url: img7,
     title: "Event Security Management",
-    category: "Events"
+    category: "Events",
   },
   {
     id: "7",
-    url: img8,  // Local: IMG_2179.jpg
+    url: img8,
     title: "Security Assessment",
-    category: "Consulting"
+    category: "Consulting",
   },
   {
     id: "8",
-    url: img9,  // Local: IMG_2180.jpg
+    url: img9,
     title: "Team Building Exercise",
-    category: "Training"
+    category: "Training",
   },
   {
     id: "9",
-    url: img10,  // Local: IMG_2181.jpg
+    url: img10,
     title: "Emergency Response Drill",
-    category: "Training"
+    category: "Training",
   },
   {
     id: "10",
-    url: img11,  // Local: IMG_2182.jpg
+    url: img11,
     title: "Security Operations Center",
-    category: "Operations"
+    category: "Operations",
   },
   {
     id: "11",
-    url: img12,  // Placeholder: Reuse img1 or add import img11
+    url: img12,
     title: "Physical Security Check",
-    category: "Operations"
+    category: "Operations",
   },
   {
     id: "12",
-    url: img13,  // Placeholder: Reuse img2 or add import img12
+    url: img13,
     title: "Advanced Training Course",
-    category: "Training"
+    category: "Training",
   },
   {
     id: "13",
-    url: img14,  // Placeholder: Reuse img3 or add import img13
+    url: img14,
     title: "Client Meeting",
-    category: "Business"
+    category: "Business",
   },
   {
-    id: "13",
-    url: img15,  // Placeholder: Reuse img3 or add import img13
-    title: "Client Meeting",
-    category: "Business"
+    id: "14",
+    url: img15,
+    title: "Team Briefing",
+    category: "Operations",
   },
   {
-    id: "13",
-    url: img16,  // Placeholder: Reuse img3 or add import img13
-    title: "Client Meeting",
-    category: "Business"
+    id: "15",
+    url: img16,
+    title: "Operational Review",
+    category: "Business",
   },
   {
-    id: "13",
-    url: img17,  // Placeholder: Reuse img3 or add import img13
-    title: "Client Meeting",
-    category: "Business"
+    id: "16",
+    url: img17,
+    title: "Field Operations",
+    category: "Operations",
   },
   {
-    id: "13",
-    url: img18,  // Placeholder: Reuse img3 or add import img13
-    title: "Client Meeting",
-    category: "Business"
-  }
+    id: "17",
+    url: img18,
+    title: "Guard Force Deployment",
+    category: "Operations",
+  },
 ];

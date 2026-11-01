@@ -60,16 +60,6 @@ const Gallery = () => {
               </AnimatedSection>
             ))}
           </div>
-
-          {/* Note about replacement */}
-          <AnimatedSection delay={500}>
-            <div className="mt-12 bg-highlight/10 border-l-4 border-highlight p-6 rounded-r-lg">
-              <p className="text-primary font-semibold mb-2">📸 All images on this page </p>
-              <p className="text-gray-600 text-sm">
-                <code className="bg-primary/10 px-2 py-1 rounded"></code>  Depict real operations, training sessions, and events, reflecting our team in action.
-              </p>
-            </div>
-          </AnimatedSection>
         </div>
       </section>
 

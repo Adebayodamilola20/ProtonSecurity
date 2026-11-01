@@ -1,10 +1,16 @@
-import { Shield, Users, Building, Lock, Eye, Headphones, BriefcaseBusiness } from "lucide-react";
+import { Shield, Users, Building, Eye, BriefcaseBusiness, type LucideIcon } from "lucide-react";
+import corporateImg from "@/assets/IMG_2232.jpg";
+import trainingImg from "@/assets/training-facility.jpg";
+import physicalImg from "@/assets/hero-security.jpg";
+import surveillanceImg from "@/assets/control-room.jpg";
+import consultingImg from "@/assets/board-meeting.jpg";
 
 export interface Service {
   id: string;
   title: string;
   description: string;
-  icon: any;
+  icon: LucideIcon;
+  image: string;
   features: string[];
 }
 
@@ -12,6 +18,7 @@ export const services: Service[] = [
   {
     id: "corporate-security",
     title: "Corporate Security",
+    image: corporateImg,
     description: "Comprehensive security programs tailored for corporate environments, ensuring the protection of assets and personnel.",
     icon: Building,
     features: [
@@ -25,6 +32,7 @@ export const services: Service[] = [
   {
     id: "training-development",
     title: "Security Training & Development",
+    image: trainingImg,
     description: "World-class training programs designed to develop highly skilled security professionals for diverse operational environments.",
     icon: Users,
     features: [
@@ -38,6 +46,7 @@ export const services: Service[] = [
   {
     id: "physical-security",
     title: "Physical Security Services",
+    image: physicalImg,
     description: "Professional deployment of trained security personnel for events, facilities, and high-value asset protection.",
     icon: Shield,
     features: [
@@ -52,6 +61,7 @@ export const services: Service[] = [
   {
     id: "surveillance",
     title: "Surveillance & Monitoring",
+    image: surveillanceImg,
     description: "State-of-the-art surveillance systems and monitoring services for comprehensive situational awareness.",
     icon: Eye,
     features: [
@@ -65,6 +75,7 @@ export const services: Service[] = [
   {
     id: "consulting",
     title: "Security Consulting",
+    image: consultingImg,
     description: "Expert advisory services to design, strengthen, and optimize your organization’s security strategy and operations.",
     icon: BriefcaseBusiness,
     features: [
@@ -76,9 +87,4 @@ export const services: Service[] = [
     ]
   }
 ];
-export interface ClientLogo {
-  id: string;
-  src: string;  // Imported image
-  alt: string;
-  name: string;  // For accessibility/screen readers
-}
+

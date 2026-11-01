@@ -1,5 +1,7 @@
 import { useState, useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
+import Lenis from "lenis";
+import "lenis/dist/lenis.css";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { ArrowRight, Shield, Award, Users, Globe, MessageCircle, Send, Trash2 } from "lucide-react";
@@ -8,19 +10,28 @@ import { services } from "@/data/services";
 import DirectorCard from "@/components/DirectorCard";
 import AnimatedSection from "@/components/AnimatedSection";
 import CountUp from "@/components/CountUp";
-import StaggeredText from "@/components/StaggeredText";
+import Testimonials from "@/components/Testimonials";
 import heroImage from "@/assets/IMG_2209.jpg";
 import heroImage2 from "@/assets/parttern.jpg";
 import heroImage3 from "@/assets/pop.jpg";
 import heroImage4 from "@/assets/IMG_2232.jpg";
-import trainingImage from "@/assets/pop.jpg";
-import gemiImages233 from "@/assets/Gemini_Generated_Image_2l1i1i2l1i1i2l1i.png";
+import trainingImage from "@/assets/training-facility.jpg";
 import gemini12344 from "@/assets/pop2.jpg";
 import model21 from "@/assets/models2222.png";
 
-/*
-const API_KEY = "";
-*/
+// Pixazo.ai chat key — set VITE_PIXAZO_API_KEY in a .env file (see .env.example).
+// Without it the chat shows a friendly fallback pointing visitors to the contact page.
+const CHAT_API_KEY = import.meta.env.VITE_PIXAZO_API_KEY as string | undefined;
+const CHAT_API_URL = "https://gateway.pixazo.ai/llama-2/v1/getData";
+
+const WELCOME_MESSAGE = {
+  id: 1,
+  text: "Hello! I'm the Proton Security AI assistant. How can I help you with our services or training today?",
+  sender: "ai",
+};
+
+const CHAT_FALLBACK_MESSAGE =
+  "I'm currently offline, but our team is ready to help! Please call 08032023600 or email info@protonsecurity.com, or visit our Contact page and we'll get back to you quickly.";
 
 // Define the bounce animation keyframes for the chat button
 const BOUNCE_ANIMATION_STYLE = `
@@ -58,7 +69,7 @@ const Index = () => {
   const chatMessagesRef = useRef(null);
 
   const [isChatOpen, setIsChatOpen] = useState(false);
-  const [messages, setMessages] = useState([]);
+  const [messages, setMessages] = useState([WELCOME_MESSAGE]);
   const [inputValue, setInputValue] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [isBouncing, setIsBouncing] = useState(false);
@@ -100,22 +111,9 @@ const Index = () => {
 
   // Function to clear the messages
   const clearChat = () => {
-    setMessages([]);
+    setMessages([WELCOME_MESSAGE]);
     setInputValue("");
-    const initialMessage = {
-      id: 1,
-      text: "Hello! I'm the Proton Security AI assistant. How can I help you with our services or training today?",
-      sender: "ai",
-    };
-    setMessages([initialMessage]);
   };
-
-  // Initialize chat with a welcome message on mount
-  useEffect(() => {
-    if (messages.length === 0) {
-      clearChat();
-    }
-  }, []);
 
   const handleSendMessage = async () => {
     if (!inputValue.trim() || isLoading || isThrottled) return;
@@ -131,6 +129,13 @@ const Index = () => {
       setIsThrottled(false);
     }, 3000);
 
+    // No API key configured — reply with contact details instead of failing silently
+    if (!CHAT_API_KEY) {
+      setMessages((prev) => [...prev, { id: Date.now() + 1, text: CHAT_FALLBACK_MESSAGE, sender: "ai" }]);
+      setIsLoading(false);
+      return;
+    }
+
     try {
       let conversationContext = "";
 
@@ -144,19 +149,20 @@ const Index = () => {
 
       conversationContext += `User: ${userInput}\nAssistant:`;
 
-      const response = await fetch("https://gateway.pixazo.ai/llama-2/v1/getData", {
+      const response = await fetch(CHAT_API_URL, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
-          "Ocp-Apim-Subscription-Key": 'API_KEY',
+          "Ocp-Apim-Subscription-Key": CHAT_API_KEY,
         },
         body: JSON.stringify({
-          system: `You are a helpful AI assistant for Proton Security, a premier provider of security solutions. Respond professionally, focusing on security services, training, and expertise. Keep responses concise and helpful. 
+          system: `You are a helpful AI assistant for Proton Security Services Nigeria Limited, a premier provider of security solutions. Respond professionally, focusing on security services, training, and expertise. Keep responses concise and helpful.
 
 IF ASKED FOR CONTACT INFORMATION, USE THE FOLLOWING EXACT DETAILS:
-Company Address: 10 Jibowo Yaba Lagos Nigeria (***REPLACE THIS WITH YOUR REAL ADDRESS***)
-Email: info@protonsecurity.com (***REPLACE THIS WITH YOUR REAL EMAIL***)
-Phone: +234 8032023600 (REPLACE THIS WITH YOUR REAL PHONE NUMBER***)
+Head Office: 10 Jibowu Street, Yaba, Lagos State, Nigeria
+Email: info@protonsecurity.com
+Phone: +234 803 202 3600 / +234 703 202 7481
+Website contact page: /contact
 `,
           prompt: conversationContext,
           max_tokens: 500,
@@ -227,8 +233,66 @@ Phone: +234 8032023600 (REPLACE THIS WITH YOUR REAL PHONE NUMBER***)
     }
   };
 
+  // Stacking scroll: each section pins once its bottom reaches the viewport,
+  // so the next section slides up over it. Tall sections scroll fully first.
+  const stackRef = useRef<HTMLDivElement>(null);
+  useEffect(() => {
+    const root = stackRef.current;
+    if (!root) return;
+    const sections = Array.from(root.querySelectorAll<HTMLElement>(":scope > section"));
+    const update = () => {
+      sections.forEach((s) => {
+        s.style.setProperty("--stack-top", `${Math.min(0, window.innerHeight - s.offsetHeight)}px`);
+      });
+    };
+    update();
+    const ro = new ResizeObserver(update);
+    sections.forEach((s) => ro.observe(s));
+    window.addEventListener("resize", update);
+
+    // As the next section slides over, gently shrink and dim the one underneath.
+    const desktop = window.matchMedia("(min-width: 769px)");
+    const applyDepth = () => {
+      sections.forEach((s, i) => {
+        const next = sections[i + 1];
+        if (!next || !desktop.matches) {
+          s.style.transform = "";
+          s.style.removeProperty("--stack-dim");
+          return;
+        }
+        const nextTop = next.getBoundingClientRect().top;
+        const progress = Math.min(1, Math.max(0, 1 - nextTop / window.innerHeight));
+        // Skip sections that are fully covered or not yet reached, to avoid needless style writes.
+        if (progress <= 0 || progress >= 1) {
+          if (s.dataset.stackP === String(progress)) return;
+        }
+        s.dataset.stackP = String(progress);
+        s.style.setProperty("--stack-dim", (0.35 * progress).toFixed(3));
+      });
+    };
+
+    const lenis = new Lenis({ duration: 1.2, easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)) });
+    lenis.on("scroll", applyDepth);
+    let rafId = requestAnimationFrame(function raf(time) {
+      lenis.raf(time);
+      rafId = requestAnimationFrame(raf);
+    });
+    applyDepth();
+
+    return () => {
+      ro.disconnect();
+      window.removeEventListener("resize", update);
+      cancelAnimationFrame(rafId);
+      lenis.destroy();
+      sections.forEach((s) => {
+        s.style.transform = "";
+        s.style.removeProperty("--stack-dim");
+      });
+    };
+  }, []);
+
   return (
-    <div className="min-h-screen">
+    <div ref={stackRef} className="min-h-screen stack-page">
 
       <style>{BOUNCE_ANIMATION_STYLE}</style>
 
@@ -258,7 +322,6 @@ Phone: +234 8032023600 (REPLACE THIS WITH YOUR REAL PHONE NUMBER***)
               </div>
               <h1 className="text-5xl md:text-7xl font-bold mb-6 leading-tight">
                 Committed to Your Safety, Today and Always.
-                {/* <span className="text-yellow-500 italic">It Is Our Enduring Commitment.</span> */}
               </h1>
               <p className="text-xl md:text-2xl mb-10 max-w-2xl text-gray-200">
                 We go beyond protecting spaces to safeguarding futures, seamlessly integrating security expertise, advanced technology, and forward-thinking protection strategies.
@@ -277,50 +340,35 @@ Phone: +234 8032023600 (REPLACE THIS WITH YOUR REAL PHONE NUMBER***)
               </div>
             </div>
           </AnimatedSection>
-
-          {/* Bottom Indicators */}
-
         </div>
       </section>
 
       {/* Stats Section */}
       <section className="section-padding bg-primary text-white">
-        <div className="container-custom">
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-8 text-center divide-x divide-white/10">
-            <AnimatedSection delay={0}>
-              <div className="p-4">
-                <div className="text-5xl font-bold text-highlight mb-2">
-                  <CountUp end={21} suffix="+" />
-                </div>
-                <div className="text-lg text-white/80">Years Experience</div>
-              </div>
-            </AnimatedSection>
-            <AnimatedSection delay={100}>
-              <div className="p-4">
-                <div className="text-5xl font-bold text-highlight mb-2">
-                  <CountUp end={12000} suffix="+" />
-                </div>
-                <div className="text-lg text-white/80">Trained Professionals</div>
-              </div>
-            </AnimatedSection>
-            <AnimatedSection delay={200}>
-              <div className="p-4">
-                <div className="text-5xl font-bold text-highlight mb-2">
-                  <CountUp end={60} suffix="+" />
-                </div>
-                <div className="text-lg text-white/80">Corporate Clients</div>
-              </div>
-            </AnimatedSection>
-            <AnimatedSection delay={300}>
-              <div className="p-4">
-                <div className="text-5xl font-bold text-highlight mb-2">
-                  <CountUp end={7} suffix="+" />
-                </div>
-                <div className="text-lg text-white/80">Countries Served</div>
-              </div>
-            </AnimatedSection>
+        <AnimatedSection>
+          <div className="marquee-container stats-marquee">
+            <div className="marquee-content marquee-reverse">
+              {[0, 1, 2, 3].map((copy) =>
+                [
+                  { end: 21, label: "Years Experience" },
+                  { end: 12000, label: "Trained Professionals" },
+                  { end: 60, label: "Corporate Clients" },
+                  { end: 7, label: "Countries Served" },
+                ].map((stat) => (
+                  <div
+                    key={`${copy}-${stat.label}`}
+                    className="flex-shrink-0 w-[280px] md:w-[340px] p-4 text-center border-r border-white/10"
+                  >
+                    <div className="text-5xl font-bold text-highlight mb-2">
+                      <CountUp end={stat.end} suffix="+" />
+                    </div>
+                    <div className="text-lg text-white/80">{stat.label}</div>
+                  </div>
+                ))
+              )}
+            </div>
           </div>
-        </div>
+        </AnimatedSection>
       </section>
 
       {/* NEW: Gallery Showcase Section */}
@@ -334,8 +382,7 @@ Phone: +234 8032023600 (REPLACE THIS WITH YOUR REAL PHONE NUMBER***)
                   📸 Gallery Showcase
                 </div>
                 <h2 className="text-5xl font-bold text-gray-900 leading-tight">
-                  Our Creative Gallery<br />
-                  {/* <span className="text-yellow-500">Gallery</span> */}
+                  Our Creative Gallery
                 </h2>
                 <p className="text-xl text-gray-600 leading-relaxed">
                   Discover the discipline and dedication that define our operations—driven by highly trained teams, rigorous standards, and a global commitment to excellence.
@@ -414,25 +461,33 @@ Phone: +234 8032023600 (REPLACE THIS WITH YOUR REAL PHONE NUMBER***)
 
             <AnimatedSection delay={200}>
               <div className="grid grid-cols-2 gap-4">
-                <Card className="bg-gradient-to-br from-primary to-accent text-white p-6 hover:scale-105 transition-transform">
-                  <Shield size={40} className="mb-4 text-highlight" />
-                  <h3 className="text-xl font-bold mb-2">Secured Logistics</h3>
-                  <p className="text-sm">Combines security and technology to move goods efficiently.</p>
+                <Card className="bg-white border border-gray-200 shadow-sm p-6 hover:-translate-y-1 hover:shadow-lg hover:border-primary/30 transition-all">
+                  <div className="w-12 h-12 rounded-lg bg-primary flex items-center justify-center mb-4">
+                    <Shield size={24} className="text-highlight" />
+                  </div>
+                  <h3 className="text-xl font-bold mb-2 text-primary">Secured Logistics</h3>
+                  <p className="text-sm text-gray-600">Combines security and technology to move goods efficiently.</p>
                 </Card>
-                <Card className="bg-gradient-to-br from-accent to-primary text-white p-6 hover:scale-105 transition-transform">
-                  <Award size={40} className="mb-4 text-highlight" />
-                  <h3 className="text-xl font-bold mb-2">Award Winning</h3>
-                  <p className="text-sm">Recognized for exceptional service delivery</p>
+                <Card className="bg-white border border-gray-200 shadow-sm p-6 hover:-translate-y-1 hover:shadow-lg hover:border-primary/30 transition-all">
+                  <div className="w-12 h-12 rounded-lg bg-primary flex items-center justify-center mb-4">
+                    <Award size={24} className="text-highlight" />
+                  </div>
+                  <h3 className="text-xl font-bold mb-2 text-primary">Award Winning</h3>
+                  <p className="text-sm text-gray-600">Recognized for exceptional service delivery</p>
                 </Card>
-                <Card className="bg-gradient-to-br from-primary to-accent text-white p-6 hover:scale-105 transition-transform">
-                  <Users size={40} className="mb-4 text-highlight" />
-                  <h3 className="text-xl font-bold mb-2">Expert Team</h3>
-                  <p className="text-sm">Highly trained security professionals</p>
+                <Card className="bg-white border border-gray-200 shadow-sm p-6 hover:-translate-y-1 hover:shadow-lg hover:border-primary/30 transition-all">
+                  <div className="w-12 h-12 rounded-lg bg-primary flex items-center justify-center mb-4">
+                    <Users size={24} className="text-highlight" />
+                  </div>
+                  <h3 className="text-xl font-bold mb-2 text-primary">Expert Team</h3>
+                  <p className="text-sm text-gray-600">Highly trained security professionals</p>
                 </Card>
-                <Card className="bg-gradient-to-br from-accent to-primary text-white p-6 hover:scale-105 transition-transform">
-                  <Globe size={40} className="mb-4 text-highlight" />
-                  <h3 className="text-xl font-bold mb-2">Global Reach</h3>
-                  <p className="text-sm">International security operations</p>
+                <Card className="bg-white border border-gray-200 shadow-sm p-6 hover:-translate-y-1 hover:shadow-lg hover:border-primary/30 transition-all">
+                  <div className="w-12 h-12 rounded-lg bg-primary flex items-center justify-center mb-4">
+                    <Globe size={24} className="text-highlight" />
+                  </div>
+                  <h3 className="text-xl font-bold mb-2 text-primary">Global Reach</h3>
+                  <p className="text-sm text-gray-600">International security operations</p>
                 </Card>
               </div>
             </AnimatedSection>
@@ -455,28 +510,41 @@ Phone: +234 8032023600 (REPLACE THIS WITH YOUR REAL PHONE NUMBER***)
             </div>
           </AnimatedSection>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {services.slice(0, 6).map((service, index) => (
-              <AnimatedSection key={service.id} delay={index * 100}>
-                <Card className="group h-full hover:shadow-xl transition-all duration-300 hover:scale-105 border-t-4 border-t-transparent hover:border-t-accent">
-                  <CardContent className="p-6">
-                    <div className="w-14 h-14 bg-accent/10 rounded-lg flex items-center justify-center mb-4 group-hover:bg-highlight/20 transition-colors">
-                      <service.icon className="text-accent group-hover:text-highlight transition-colors" size={28} />
+          <div className="max-w-5xl mx-auto space-y-4 md:space-y-5">
+            {services.map((service, index) => {
+              const reversed = index % 2 === 1;
+              return (
+                <AnimatedSection key={service.id}>
+                  <div className="grid grid-cols-1 md:grid-cols-12 gap-5 md:gap-8 items-center bg-white rounded-2xl p-3 md:p-4 shadow-sm border border-gray-200/70">
+                    <div className={`md:col-span-5 overflow-hidden rounded-xl group ${reversed ? "md:order-2" : ""}`}>
+                      <img
+                        src={service.image}
+                        alt={service.title}
+                        loading="lazy"
+                        className="w-full h-40 md:h-40 object-cover transition-transform duration-700 group-hover:scale-105"
+                      />
                     </div>
-                    <h3 className="text-xl font-bold text-primary mb-3">{service.title}</h3>
-                    <p className="text-gray-600 mb-4">{service.description}</p>
-                    <ul className="space-y-1 text-gray-600">
-                      {service.features.slice(0, 3).map((feature, idx) => (
-                        <li key={idx} className="flex items-center">
-                          <span className="w-1.5 h-1.5 bg-highlight rounded-full mr-2"></span>
-                          {feature}
-                        </li>
-                      ))}
-                    </ul>
-                  </CardContent>
-                </Card>
-              </AnimatedSection>
-            ))}
+                    <div className={`md:col-span-7 px-1 md:px-2 ${reversed ? "md:order-1" : ""}`}>
+                      <div className="flex items-center gap-3 mb-3">
+                        <span className="text-sm font-bold text-highlight tracking-widest">
+                          {String(index + 1).padStart(2, "0")}
+                        </span>
+                        <span className="h-px w-8 bg-highlight/60" />
+                        <service.icon className="text-primary" size={20} />
+                      </div>
+                      <h3 className="text-xl md:text-2xl font-bold text-primary mb-1.5">{service.title}</h3>
+                      <p className="text-gray-600 mb-3 leading-relaxed">{service.description}</p>
+                      <Link
+                        to={`/services#${service.id}`}
+                        className="inline-flex items-center text-primary font-semibold hover:text-accent transition-colors"
+                      >
+                        Learn more <ArrowRight className="ml-1.5" size={16} />
+                      </Link>
+                    </div>
+                  </div>
+                </AnimatedSection>
+              );
+            })}
           </div>
 
           <AnimatedSection delay={300}>
@@ -569,182 +637,8 @@ Phone: +234 8032023600 (REPLACE THIS WITH YOUR REAL PHONE NUMBER***)
         </div>
       </section>
 
-      {/* Testimonials Section
-      <section className="section-padding bg-white">
-        <div className="container-custom">
-          <AnimatedSection>
-            <div className="text-center mb-12">
-              <div className="inline-block bg-highlight/10 text-highlight px-4 py-1 rounded-full text-sm font-semibold mb-4">
-                CLIENT TESTIMONIALS
-              </div>
-              <h2 className="text-4xl font-bold text-primary mb-4">What Our Clients Say</h2>
-              <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-                Trusted by industry leaders worldwide for exceptional security services
-              </p>
-            </div>
-          </AnimatedSection>
-          
-          
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            <AnimatedSection delay={0}>
-              <Card className="h-full hover:shadow-lg transition-shadow border-l-4 border-l-accent">
-                <CardContent className="p-6">
-                  <div className="flex items-center mb-4">
-                    {[...Array(5)].map((_, i) => (
-                      <svg key={i} className="w-5 h-5 text-yellow-400 fill-current" viewBox="0 0 20 20">
-                        <path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z" />
-                      </svg>
-                    ))}
-                  </div>
-                  <p className="text-gray-700 mb-4 italic">
-                    "Proton Security transformed our corporate security infrastructure. Their professionalism and expertise are unmatched. Highly recommended!"
-                  </p>
-                  <div className="flex items-center">
-                    <div className="w-12 h-12 bg-gradient-to-br from-primary to-accent rounded-full flex items-center justify-center text-white font-bold mr-3">
-                      JM
-                    </div>
-                    <div>
-                      <h4 className="font-bold text-primary">CHI Limited</h4>
-                      <p className="text-sm text-gray-500"></p>
-                    </div>
-                  </div>
-                </CardContent>
-              </Card>
-            </AnimatedSection>
-
-            <AnimatedSection delay={100}>
-              <Card className="h-full hover:shadow-lg transition-shadow border-l-4 border-l-accent">
-                <CardContent className="p-6">
-                  <div className="flex items-center mb-4">
-                    {[...Array(5)].map((_, i) => (
-                      <svg key={i} className="w-5 h-5 text-yellow-400 fill-current" viewBox="0 0 20 20">
-                        <path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z" />
-                      </svg>
-                    ))}
-                  </div>
-                  <p className="text-gray-700 mb-4 italic">
-                    "The training programs are world-class. Our security team is now more confident and capable than ever before. Excellent investment!"
-                  </p>
-                  <div className="flex items-center">
-                    <div className="w-12 h-12 bg-gradient-to-br from-primary to-accent rounded-full flex items-center justify-center text-white font-bold mr-3">
-                      SA
-                    </div>
-                    <div>
-                      <h4 className="font-bold text-primary">MTN Nigeria</h4>
-                      <p className="text-sm text-gray-500"></p>
-                    </div>
-                  </div>
-                </CardContent>
-              </Card>
-            </AnimatedSection>
-
-            <AnimatedSection delay={200}>
-              <Card className="h-full hover:shadow-lg transition-shadow border-l-4 border-l-accent">
-                <CardContent className="p-6">
-                  <div className="flex items-center mb-4">
-                    {[...Array(5)].map((_, i) => (
-                      <svg key={i} className="w-5 h-5 text-yellow-400 fill-current" viewBox="0 0 20 20">
-                        <path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z" />
-                      </svg>
-                    ))}
-                  </div>
-                  <p className="text-gray-700 mb-4 italic">
-                    "Outstanding service! Their event security management for our annual conference was flawless. Professional team, highly efficient."
-                  </p>
-                  <div className="flex items-center">
-                    <div className="w-12 h-12 bg-gradient-to-br from-primary to-accent rounded-full flex items-center justify-center text-white font-bold mr-3">
-                      DW
-                    </div>
-                    <div>
-                      <h4 className="font-bold text-primary">Ardova PLC</h4>
-                      <p className="text-sm text-gray-500"></p>
-                    </div>
-                  </div>
-                </CardContent>
-              </Card>
-            </AnimatedSection>
-
-            <AnimatedSection delay={300}>
-              <Card className="h-full hover:shadow-lg transition-shadow border-l-4 border-l-accent">
-                <CardContent className="p-6">
-                  <div className="flex items-center mb-4">
-                    {[...Array(5)].map((_, i) => (
-                      <svg key={i} className="w-5 h-5 text-yellow-400 fill-current" viewBox="0 0 20 20">
-                        <path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z" />
-                      </svg>
-                    ))}
-                  </div>
-                  <p className="text-gray-700 mb-4 italic">
-                    "Best security partner we've ever worked with. Their attention to detail and rapid response capabilities are exceptional. Five stars!"
-                  </p>
-                  <div className="flex items-center">
-                    <div className="w-12 h-12 bg-gradient-to-br from-primary to-accent rounded-full flex items-center justify-center text-white font-bold mr-3">
-                      ER
-                    </div>
-                    <div>
-                      <h4 className="font-bold text-primary">Cumming West Africa</h4>
-                      <p className="text-sm text-gray-500"></p>
-                    </div>
-                  </div>
-                </CardContent>
-              </Card>
-            </AnimatedSection>
-
-            <AnimatedSection delay={400}>
-              <Card className="h-full hover:shadow-lg transition-shadow border-l-4 border-l-accent">
-                <CardContent className="p-6">
-                  <div className="flex items-center mb-4">
-                    {[...Array(5)].map((_, i) => (
-                      <svg key={i} className="w-5 h-5 text-yellow-400 fill-current" viewBox="0 0 20 20">
-                        <path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z" />
-                      </svg>
-                    ))}
-                  </div>
-                  <p className="text-gray-700 mb-4 italic">
-                    "Their crisis management training saved our team during a critical situation. Professional, thorough, and highly effective. Thank you!"
-                  </p>
-                  <div className="flex items-center">
-                    <div className="w-12 h-12 bg-gradient-to-br from-primary to-accent rounded-full flex items-center justify-center text-white font-bold mr-3">
-                      MC
-                    </div>
-                    <div>
-                      <h4 className="font-bold text-primary"></h4>
-                      <p className="text-sm text-gray-500">Julius Berger Nigeria</p>
-                    </div>
-                  </div>
-                </CardContent>
-              </Card>
-            </AnimatedSection>
-
-            <AnimatedSection delay={500}>
-              <Card className="h-full hover:shadow-lg transition-shadow border-l-4 border-l-accent">
-                <CardContent className="p-6">
-                  <div className="flex items-center mb-4">
-                    {[...Array(5)].map((_, i) => (
-                      <svg key={i} className="w-5 h-5 text-yellow-400 fill-current" viewBox="0 0 20 20">
-                        <path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z" />
-                      </svg>
-                    ))}
-                  </div>
-                  <p className="text-gray-700 mb-4 italic">
-                    "Reliable, professional, and always available. Proton Security has been protecting our facilities for 5 years. Couldn't be happier!"
-                  </p>
-                  <div className="flex items-center">
-                    <div className="w-12 h-12 bg-gradient-to-br from-primary to-accent rounded-full flex items-center justify-center text-white font-bold mr-3">
-                      LT
-                    </div>
-                    <div>
-                      <h4 className="font-bold text-primary"></h4>
-                      <p className="text-sm text-gray-500">SAHCOL</p>
-                    </div>
-                  </div>
-                </CardContent>
-              </Card>
-            </AnimatedSection>
-          </div>
-        </div>
-      </section>
-      */}
+      {/* Testimonials */}
+      <Testimonials />
 
       {/* CTA Section */}
       <section className="section-padding bg-gradient-to-r from-primary via-accent to-primary text-white">

@@ -78,12 +78,13 @@ const Contact = () => {
         subject: "",
         message: ""
       });
-    } catch (error: any) {
+    } catch (error) {
       // Enhanced error logging
+      const err = error as { message?: string; status?: number; text?: string };
       console.error("EmailJS Error Details:", {
-        message: error.message || 'Unknown error',
-        status: error.status,
-        text: error.text,
+        message: err.message || 'Unknown error',
+        status: err.status,
+        text: err.text,
         full: error
       });
       toast({
@@ -133,14 +134,6 @@ const Contact = () => {
                   <ContactCard icon={<MapPin className="text-accent" />} title="Northern Regional Office" info={["Plot 1031, Mabushi District,","Cadastral Zone,FCT- Abuja"]} />
                   <ContactCard icon={<MapPin className="text-accent" />} title="South/West Regional Office" info={["1, Paul Hendrickse Road, Off Aare Avenue, ","New Bodija,  Ibadan, Oyo State, Nigeria"]} />
                   <ContactCard icon={<MapPin className="text-accent" />} title="South/East Regional Office" info={["4, Graceland Avenue, Tombia Extension,","G R A Phase 2, Port Harcourt, Rivers State,Nigeria"]} />
-
-
-
-
-                  <ContactCard icon={<MapPin className="text-accent" />} title="Abuja Office" info={["Plot 1031, Mabushi District,", "Cadastral Zone, FCT-Abuja"]} />
-                  <ContactCard icon={<MapPin className="text-accent" />} title="Ibadan Office" info={["1,Paul Hendrickse Road, ", "Off Aare Avenue,New Bodija,Ibandan "]} />
-                  <ContactCard icon={<MapPin className="text-accent" />} title="Port-Harcourt Office" info={["4,Graceland Avenue, ", "Tombia Extension,GRA Phase 2,Port-Harcourt"]} />
-                  <ContactCard icon={<MapPin className="text-accent" />} title="Lagos Office" info={["15,Akanbi Cresent, ","Onitiri,Lagos State"]} />
                   <ContactCard icon={<Clock className="text-accent" />} title="Hours" info={["Mon - Fri: 8AM - 6PM", "24/7 Emergency Support"]} />
                 </div>
               ))}

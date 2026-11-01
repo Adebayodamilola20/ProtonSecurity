@@ -26,7 +26,7 @@ const Clients = () => {
             <div className="text-center mb-12">
               <h2 className="text-4xl font-bold text-primary mb-4">Trusted By Industry Leaders</h2>
               <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-                We're proud to serve over 500 corporate clients across diverse industries
+                We're proud to serve a growing list of corporate clients across diverse industries
               </p>
             </div>
           </AnimatedSection>
@@ -34,20 +34,11 @@ const Clients = () => {
           <AnimatedSection delay={100}>
             <ClientMarquee />
           </AnimatedSection>
-
-          <AnimatedSection delay={200}>
-            <div className="mt-8 bg-highlight/10 border-l-4 border-highlight p-6 rounded-r-lg">
-              <p className="text-primary font-semibold mb-2">🏢 REPLACE CLIENT LOGOS HERE</p>
-              <p className="text-gray-600 text-sm">
-                Update client logos in <code className="bg-primary/10 px-2 py-1 rounded">src/data/clients.ts</code> with your actual client company logos.
-              </p>
-            </div>
-          </AnimatedSection>
         </div>
       </section>
 
       {/* Testimonials */}
-      {/* <Testimonials /> */}
+      <Testimonials />
     </div>
   );
 };

@@ -146,9 +146,7 @@ const DirectorProfile = () => {
               </Card>
 
               {/* Achievements */}
-
-              {/* Achievements */}
-              {director.id !== "sarah-john" && (
+              {director.achievements.length > 0 && (
                 <Card>
                   <CardContent className="p-6">
                     <div className="flex items-center space-x-3 mb-6">
