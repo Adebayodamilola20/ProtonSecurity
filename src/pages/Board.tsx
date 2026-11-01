@@ -121,9 +121,9 @@ const Board = () => {
               { title: "Regional Manager Lagos Mainland", name: "Arowolo Adekunle" },
               { title: "Regional Manager Lagos Island", name: "Jude Orabueze" },
               { title: "Regional Manager North", name: "Adekunle Ebenezer" },
-              { title: "Regional Manager West", name: "" },
+              { title: "Regional Manager West", name: "Emmanuel Aofolaju" },
               { title: "HR/Admin Manager", name: "Bolatito Aina" },
-              { title: "Secured Logistics Manager", name: "" }
+              { title: "Secured Logistics Manager", name: "Toyin Omilegan" }
             ].map((item, index) => (
               <AnimatedSection key={index} delay={index * 100}>
                 <div className="text-center p-8 bg-white/50 backdrop-blur-sm rounded-xl border border-gray-100 shadow-sm transition-all hover:shadow-md hover:scale-105 group">

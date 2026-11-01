@@ -320,7 +320,7 @@ Website contact page: /contact
                 PROTON SECURITY SERVICES
               </div>
               <h1 className="text-5xl md:text-7xl font-bold mb-6 leading-tight">
-                Committed to Your Safety, Today and Always.
+                We Enable Your Safety to Achieve More.
               </h1>
               <p className="text-xl md:text-2xl mb-10 max-w-2xl text-gray-200">
                 We go beyond protecting spaces to safeguarding futures, seamlessly integrating security expertise, advanced technology, and forward-thinking protection strategies.
