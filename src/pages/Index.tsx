@@ -15,7 +15,7 @@ import heroImage from "@/assets/IMG_2209.jpg";
 import heroImage2 from "@/assets/parttern.jpg";
 import heroImage3 from "@/assets/pop.jpg";
 import heroImage4 from "@/assets/IMG_2232.jpg";
-import trainingImage from "@/assets/training-facility.jpg";
+import trainingImage from "@/assets/parttern.jpg";
 import gemini12344 from "@/assets/pop2.jpg";
 import model21 from "@/assets/models2222.png";
 
@@ -465,7 +465,7 @@ Website contact page: /contact
                     <Shield size={24} className="text-highlight" />
                   </div>
                   <h3 className="text-xl font-bold mb-2 text-primary">Secured Logistics</h3>
-                  <p className="text-sm text-gray-600">Combines security and technology to move goods efficiently.</p>
+                  <p className="text-sm text-gray-600">Combines security and technology to transit and move high-value assets.</p>
                 </Card>
                 <Card className="bg-white border border-gray-200 shadow-sm p-6 hover:-translate-y-1 hover:shadow-lg hover:border-primary/30 transition-all">
                   <div className="w-12 h-12 rounded-lg bg-primary flex items-center justify-center mb-4">
@@ -519,6 +519,7 @@ Website contact page: /contact
                       <img
                         src={service.image}
                         alt={service.title}
+                      style={{ objectPosition: service.imagePosition }}
                         loading="lazy"
                         className="w-full h-40 md:h-40 object-cover transition-transform duration-700 group-hover:scale-105"
                       />

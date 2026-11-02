@@ -3,6 +3,8 @@ import { Card, CardContent } from "@/components/ui/card";
 import AnimatedSection from "@/components/AnimatedSection";
 import CountUp from "@/components/CountUp";
 import img2228 from "@/assets/IMG_2228.jpg";
+import PageHero from "@/components/PageHero";
+import aboutHeroImg from "@/assets/IMG_2209.jpg";
 
 const About = () => {
   const values = [
@@ -31,18 +33,13 @@ const About = () => {
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
-      <section className="relative py-24 bg-gradient-to-r from-primary via-accent to-primary text-white">
-        <div className="container-custom px-4">
-          <AnimatedSection>
-            <div className="max-w-3xl mx-auto text-center">
-              <h1 className="text-5xl font-bold mb-6">About Proton Security</h1>
-              <p className="text-xl text-gray-200">
-                Leading the industry in comprehensive security solutions with over two decades of excellence
-              </p>
-            </div>
-          </AnimatedSection>
-        </div>
-      </section>
+      <PageHero
+        eyebrow="About Us"
+        title="About Proton Security"
+        subtitle="Leading the industry in comprehensive security solutions with over two decades of excellence"
+        image={aboutHeroImg}
+        imageAlt="Proton Security team on duty"
+      />
 
       {/* Mission & Vision */}
       <section className="section-padding bg-background">

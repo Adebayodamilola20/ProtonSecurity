@@ -7,6 +7,8 @@ import { Phone, Mail, MapPin, Clock, Loader2 } from "lucide-react";
 import AnimatedSection from "@/components/AnimatedSection";
 import { useToast } from "@/hooks/use-toast";
 import emailjs from '@emailjs/browser';
+import PageHero from "@/components/PageHero";
+import contactHeroImg from "@/assets/IMG_2232.jpg";
 
 const ContactCard = ({ icon, title, info }: { icon: ReactNode, title: string, info: string[] }) => (
   <div className="min-w-[300px] flex-shrink-0">
@@ -107,18 +109,13 @@ const Contact = () => {
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
-      <section className="relative py-24 bg-gradient-to-r from-primary via-accent to-primary text-white">
-        <div className="container-custom px-4">
-          <AnimatedSection>
-            <div className="max-w-3xl mx-auto text-center">
-              <h1 className="text-5xl font-bold mb-6">Contact Us</h1>
-              <p className="text-xl text-gray-200">
-                Get in touch with our team to discuss your security needs
-              </p>
-            </div>
-          </AnimatedSection>
-        </div>
-      </section>
+      <PageHero
+        eyebrow="Contact"
+        title="Contact Us"
+        subtitle="Get in touch with our team to discuss your security needs"
+        image={contactHeroImg}
+        imageAlt="Proton Security officers"
+      />
 
       {/* Contact Info Scrolling Banner */}
       <section className="py-12 bg-background overflow-hidden border-b border-gray-100">

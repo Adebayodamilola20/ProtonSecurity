@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 import { ArrowRight, Check } from "lucide-react";
 import AnimatedSection from "@/components/AnimatedSection";
+import PageHero from "@/components/PageHero";
 
 const Services = () => {
   // Duplicate logos for infinite scroll effect
@@ -13,29 +14,13 @@ const Services = () => {
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
-      <section className="bg-white pt-16 pb-12 md:pt-24 md:pb-16">
-        <div className="container-custom grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center">
-          <AnimatedSection>
-            <div className="inline-block bg-highlight/10 text-highlight px-4 py-1 rounded-full text-sm font-semibold mb-5">
-              OUR SERVICES
-            </div>
-            <h1 className="text-4xl md:text-6xl font-bold text-primary leading-tight mb-6">
-              Security built around the way you operate
-            </h1>
-            <p className="text-lg text-gray-600 leading-relaxed max-w-xl">
-              From corporate sites to high-profile events, we combine trained personnel, technology and
-              intelligence to deliver protection tailored to your organisation.
-            </p>
-          </AnimatedSection>
-          <AnimatedSection delay={150}>
-            <img
-              src={services[0].image}
-              alt="Proton Security officer on duty"
-              className="w-full aspect-[4/3] object-cover rounded-3xl shadow-xl"
-            />
-          </AnimatedSection>
-        </div>
-      </section>
+      <PageHero
+        eyebrow="Our Services"
+        title="Security built around the way you operate"
+        subtitle="From corporate sites to high-profile events, we combine trained personnel, technology and intelligence to deliver protection tailored to your organisation."
+        image={services[0].image}
+        imageAlt="Proton Security officer on duty"
+      />
 
       {/* Services: alternating left/right rows */}
       <section className="pb-20 md:pb-28 bg-white">
@@ -53,6 +38,7 @@ const Services = () => {
                     <img
                       src={service.image}
                       alt={service.title}
+                      style={{ objectPosition: service.imagePosition }}
                       loading="lazy"
                       className="w-full aspect-[4/3] object-cover transition-transform duration-700 group-hover:scale-105"
                     />

@@ -1,9 +1,9 @@
 import { Shield, Users, Building, Eye, BriefcaseBusiness, type LucideIcon } from "lucide-react";
-import corporateImg from "@/assets/IMG_2232.jpg";
-import trainingImg from "@/assets/training-facility.jpg";
-import physicalImg from "@/assets/hero-security.jpg";
-import surveillanceImg from "@/assets/control-room.jpg";
-import consultingImg from "@/assets/board-meeting.jpg";
+import corporateImg from "@/assets/IMG_2239.jpg";
+import trainingImg from "@/assets/parttern.jpg";
+import physicalImg from "@/assets/pop2.jpg";
+import surveillanceImg from "@/assets/IMG_2219.jpg";
+import consultingImg from "@/assets/security-consulting.jpg";
 
 export interface Service {
   id: string;
@@ -11,6 +11,7 @@ export interface Service {
   description: string;
   icon: LucideIcon;
   image: string;
+  imagePosition?: string; // CSS object-position, for photos whose subject is off-centre
   features: string[];
 }
 
@@ -76,6 +77,7 @@ export const services: Service[] = [
     id: "consulting",
     title: "Security Consulting",
     image: consultingImg,
+    imagePosition: "left center",
     description: "Expert advisory services to design, strengthen, and optimize your organization’s security strategy and operations.",
     icon: BriefcaseBusiness,
     features: [

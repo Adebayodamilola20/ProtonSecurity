@@ -4,6 +4,8 @@ import { Link } from "react-router-dom";
 import { Shield, Target, Brain, Users, Award, BookOpen } from "lucide-react";
 import AnimatedSection from "@/components/AnimatedSection";
 import trainingImage from "@/assets/parttern.jpg";
+import PageHero from "@/components/PageHero";
+import trainingHeroImg from "@/assets/IMG_2234.jpg";
 
 const Training = () => {
   const corePrograms = [
@@ -57,18 +59,13 @@ const Training = () => {
 
   return (
     <div className="min-h-screen">
-      <section className="relative py-24 bg-gradient-to-r from-primary via-accent to-primary text-white">
-        <div className="container-custom px-4">
-          <AnimatedSection>
-            <div className="max-w-3xl mx-auto text-center">
-              <h1 className="text-5xl font-bold mb-6">Training & Recertification</h1>
-              <p className="text-xl text-gray-200">
-                World-class security training programs designed to develop elite professionals
-              </p>
-            </div>
-          </AnimatedSection>
-        </div>
-      </section>
+      <PageHero
+        eyebrow="Training"
+        title="Training & Recertification"
+        subtitle="World-class security training programs designed to develop elite professionals"
+        image={trainingHeroImg}
+        imageAlt="Proton Security training facility"
+      />
 
       <section className="section-padding bg-background">
         <div className="container-custom">

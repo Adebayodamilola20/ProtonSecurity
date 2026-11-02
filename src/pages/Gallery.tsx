@@ -2,6 +2,8 @@ import { useState } from "react";
 import { galleryItems } from "@/data/gallery";
 import { X } from "lucide-react";
 import AnimatedSection from "@/components/AnimatedSection";
+import PageHero from "@/components/PageHero";
+import galleryHeroImg from "@/assets/pop2.jpg";
 
 const Gallery = () => {
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
@@ -22,18 +24,13 @@ const Gallery = () => {
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
-      <section className="relative py-24 bg-gradient-to-r from-primary via-accent to-primary text-white">
-        <div className="container-custom px-4">
-          <AnimatedSection>
-            <div className="max-w-3xl mx-auto text-center">
-              <h1 className="text-5xl font-bold mb-6">Gallery</h1>
-              <p className="text-xl text-gray-200">
-                A visual journey through our operations, training, and achievements
-              </p>
-            </div>
-          </AnimatedSection>
-        </div>
-      </section>
+      <PageHero
+        eyebrow="Gallery"
+        title="Gallery"
+        subtitle="A visual journey through our operations, training, and achievements"
+        image={galleryHeroImg}
+        imageAlt="Proton Security operations"
+      />
 
       {/* Gallery Grid */}
       <section className="section-padding bg-background">

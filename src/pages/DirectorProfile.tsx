@@ -141,7 +141,11 @@ const DirectorProfile = () => {
               <Card>
                 <CardContent className="p-6">
                   <h2 className="text-2xl font-bold text-primary mb-4">Biography</h2>
-                  <p className="text-gray-700 leading-relaxed">{director.bio}</p>
+                  <div className="space-y-4">
+                    {director.bio.split("\n\n").map((para, i) => (
+                      <p key={i} className="text-gray-700 leading-relaxed">{para}</p>
+                    ))}
+                  </div>
                 </CardContent>
               </Card>
 

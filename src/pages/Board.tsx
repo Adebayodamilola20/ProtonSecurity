@@ -1,24 +1,20 @@
 import { directors } from "@/data/directors";
 import DirectorCard from "@/components/DirectorCard";
 import AnimatedSection from "@/components/AnimatedSection";
+import PageHero from "@/components/PageHero";
+import boardHeroImg from "@/assets/board-meeting.jpg";
 
 const Board = () => {
   return (
     <div className="min-h-screen">
       {/*Hero section */}
-      <section className="relative py-24 bg-gradient-to-r from-primary via-accent to-primary text-white">
-        <div className="container-custom px-4">
-
-          <AnimatedSection>
-            <div className="max-w-3xl mx-auto text-center">
-              <h1 className="text-5xl font-bold mb-6">Directors</h1>
-              <p className="text-xl text-gray-200">
-                Meet the experienced leaders driving Proton Security's vision and excellence
-              </p>
-            </div>
-          </AnimatedSection>
-        </div>
-      </section>
+      <PageHero
+        eyebrow="Leadership"
+        title="Directors"
+        subtitle="Meet the experienced leaders driving Proton Security's vision and excellence"
+        image={boardHeroImg}
+        imageAlt="Proton Security leadership meeting"
+      />
 
       {/* Directors Grid */}
       <section className="section-padding bg-background">

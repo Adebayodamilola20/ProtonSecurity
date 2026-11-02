@@ -16,6 +16,15 @@ import img17 from "@/assets/IMG_2251.jpg";
 import img18 from "@/assets/IMG_2250.jpg";
 import img19 from "@/assets/IMG_2211 2.jpg";
 
+import fcmb1 from "@/assets/fcmb-award-1.jpg";
+import fcmb2 from "@/assets/fcmb-award-2.jpg";
+import fcmb3 from "@/assets/fcmb-award-3.jpg";
+import fcmb4 from "@/assets/fcmb-award-4.jpg";
+import fcmb5 from "@/assets/fcmb-award-5.jpg";
+import fcmb6 from "@/assets/fcmb-award-6.jpg";
+import fcmb7 from "@/assets/fcmb-award-7.jpg";
+import fcmb8 from "@/assets/fcmb-award-8.jpg";
+
 export interface GalleryItem {
   id: string;
   url: string; // Local image import
@@ -24,6 +33,54 @@ export interface GalleryItem {
 }
 
 export const galleryItems: GalleryItem[] = [
+  {
+    id: "fcmb-1",
+    url: fcmb1,
+    title: "FCMB Service Excellence Award",
+    category: "Awards",
+  },
+  {
+    id: "fcmb-2",
+    url: fcmb2,
+    title: "Award Recipient Interview",
+    category: "Awards",
+  },
+  {
+    id: "fcmb-3",
+    url: fcmb3,
+    title: "Celebrating Service Excellence",
+    category: "Awards",
+  },
+  {
+    id: "fcmb-4",
+    url: fcmb4,
+    title: "Proud Award Recipient",
+    category: "Awards",
+  },
+  {
+    id: "fcmb-5",
+    url: fcmb5,
+    title: "Award Presentation with FCMB",
+    category: "Awards",
+  },
+  {
+    id: "fcmb-6",
+    url: fcmb6,
+    title: "FCMB Recognition Ceremony",
+    category: "Awards",
+  },
+  {
+    id: "fcmb-7",
+    url: fcmb7,
+    title: "Honoured by FCMB Management",
+    category: "Awards",
+  },
+  {
+    id: "fcmb-8",
+    url: fcmb8,
+    title: "FCMB Service Excellence Award Team",
+    category: "Awards",
+  },
   {
     id: "1",
     url: img19,

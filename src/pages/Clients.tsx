@@ -1,23 +1,20 @@
 import ClientMarquee from "@/components/ClientMarquee";
 import Testimonials from "@/components/Testimonials";
 import AnimatedSection from "@/components/AnimatedSection";
+import PageHero from "@/components/PageHero";
+import clientsHeroImg from "@/assets/pop.jpg";
 
 const Clients = () => {
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
-      <section className="relative py-24 bg-gradient-to-r from-primary via-accent to-primary text-white">
-        <div className="container-custom px-4">
-          <AnimatedSection>
-            <div className="max-w-3xl mx-auto text-center">
-              <h1 className="text-5xl font-bold mb-6">Our Clients</h1>
-              <p className="text-xl text-gray-200">
-                Trusted by leading organizations worldwide
-              </p>
-            </div>
-          </AnimatedSection>
-        </div>
-      </section>
+      <PageHero
+        eyebrow="Our Clients"
+        title="Our Clients"
+        subtitle="Trusted by leading organizations worldwide"
+        image={clientsHeroImg}
+        imageAlt="Proton Security officers at a client site"
+      />
 
       {/* Client Logos Marquee */}
       <section className="section-padding bg-background">
